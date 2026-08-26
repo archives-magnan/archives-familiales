@@ -542,6 +542,54 @@ dd { margin: .1rem 0 0; }
 .a-completer::before { content: "à compléter"; }
 .a-completer:not(:empty)::before { content: none; }
 
+/* ── Planche des QR codes ── */
+
+.planche {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+}
+
+.planche li {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.1rem 1rem .9rem;
+  text-align: center;
+  box-shadow: var(--ombre);
+  transition: transform .25s var(--courbe), box-shadow .25s var(--courbe);
+}
+
+.planche li:hover { transform: translateY(-3px); box-shadow: var(--ombre-levee); }
+
+/* Le code reste noir sur blanc même en thème sombre : un QR inversé ne se lit
+   pas de façon fiable, et celui-ci finira sur du papier. */
+.planche img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 9rem;
+  margin: 0 auto .75rem;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.planche .numero-qr {
+  display: block;
+  font: 600 1.25rem/1 var(--sans);
+  color: var(--ink);
+  margin-bottom: .3rem;
+}
+
+.planche code {
+  font-size: .6875rem;
+  color: var(--ink-soft);
+  word-break: break-all;
+}
+
 /* ── Divers ── */
 
 .note {
@@ -614,6 +662,7 @@ a { color: var(--accent); }
   main > * { animation: none; }
 
   .arbre li { break-inside: avoid; }
+  .planche li { break-inside: avoid; box-shadow: none; }
   .arborescence summary,
   .arborescence .personne { box-shadow: none; }
 

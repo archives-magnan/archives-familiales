@@ -54,6 +54,7 @@ Dans le dépôt, cela correspond à :
 ```
 index.html        ← la page d'accueil, qui liste tout
 404.html          ← la page affichée quand une adresse n'existe pas
+qr/               ← les QR codes du livre, un par emplacement
 style.css         ← l'apparence, commune à toutes les pages
 theme.js          ← le bouton clair/sombre, le seul programme du site
 audio/            ← les fichiers .mp3
@@ -139,6 +140,32 @@ La méthode : une première passe par un outil de transcription automatique,
 puis une correction à l'oreille par quelqu'un de la famille — c'est là que se
 rattrapent les noms propres et les lieux, qu'aucune machine ne devine. **Ce
 qui reste incompris se note `[inaudible]`**, jamais comblé au jugé.
+
+### Les QR codes du livre
+
+Ils sont dans `qr/`, en `.svg` (à privilégier : net à n'importe quelle taille)
+et en `.png`. La page `qr/index.html` les montre tous, avec les consignes
+d'impression.
+
+**Un code ne connaît pas le titre de l'enregistrement, seulement son numéro.**
+C'est la page qui porte le contenu. Deux conséquences : décider quel
+enregistrement occupe quel emplacement ne change rien aux codes, et un code déjà
+imprimé reste valable si l'hébergement déménage un jour.
+
+Pour en régénérer un — par exemple si l'adresse du site change :
+
+```bash
+brew install qrencode
+qrencode -t SVG -l H -m 4 -o qr/01.svg \
+  "https://ADRESSE-DU-SITE/archives-familiales/01/"
+```
+
+`-l H` demande 30 % de redondance : un livre se corne, se tache et vieillit, le
+code doit rester lisible avec un tiers de sa surface abîmée. `-m 4` réserve le
+cadre blanc autour du code, qui fait partie du code.
+
+**Vérifier chaque code après l'avoir généré**, en le scannant. Un QR faux est
+indétectable à l'œil.
 
 ### Modifier le texte d'une page
 
