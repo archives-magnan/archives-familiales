@@ -15,15 +15,14 @@
 
   <!-- Le fichier audio est dans le dossier audio/ du dépôt. Le chemin est
        relatif : il reste valable si le site déménage un jour ailleurs. -->
-  <audio controls preload="none"
+  <!-- controlsList="nodownload" retire l'entrée « Télécharger » du menu ⋮ du
+       lecteur. Chrome et Edge la respectent, Firefox et Safari l'ignorent :
+       c'est un geste de politesse, pas une protection. Le fichier reste
+       accessible à qui lit la source de la page. -->
+  <audio controls controlsList="nodownload" preload="none"
          src="../audio/AUDIO-001_Jeanne-Dupont_ecoute.mp3">
     Votre navigateur ne sait pas lire ce fichier.
   </audio>
-
-  <p class="telecharger">
-    <a href="../audio/AUDIO-001_Jeanne-Dupont_ecoute.mp3" download>
-      Télécharger l'enregistrement</a>
-  </p>
 
   <h2>Fiche</h2>
   <dl>

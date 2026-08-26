@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L'arbre de la famille — Archives sonores de la famille</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+
+  <h1>L'arbre de la famille</h1>
+  <p class="lede">
+    Cliquez sur un nom pour dérouler sa descendance. Le casque 🎧 signale
+    quelqu'un dont la voix est conservée dans ces archives.
+  </p>
+
+  <!-- ─────────────────────────────────────────────────────────────
+       COMMENT AJOUTER QUELQU'UN
+
+       Un « bloc personne » se recopie tel quel :
+
+         <li>
+           <details>
+             <summary><b>Prénom Nom</b> <i>(née Nom de jeune fille)</i>
+                      <span class="vie">1930–2011</span></summary>
+             <ul> … ses enfants ici … </ul>
+           </details>
+         </li>
+
+       Quelqu'un sans enfant n'a pas besoin de <details> : un simple
+         <li><span class="personne"><b>Prénom Nom</b></span></li>
+       suffit.
+
+       Pour lier une personne à ses enregistrements, ajouter dans le
+       <summary> : <a href="../01/">🎧</a>
+
+       Une information qu'on ignore se laisse en <span class="a-completer">,
+       jamais devinée. Un arbre faux est pire qu'un arbre incomplet.
+       ───────────────────────────────────────────────────────────── -->
+
+  <h2>Les parents de Grand-Père et de Mady</h2>
+
+  <div class="arbre">
+    <ul class="racine">
+      <li>
+        <span class="personne">
+          <b>Maurice <span class="a-completer">Nom</span></b>
+          <span class="lien">et</span>
+          <b>Jeanne <span class="a-completer">Nom</span></b>
+          <span class="role">parents de Grand-Père</span>
+        </span>
+      </li>
+      <li>
+        <span class="personne">
+          <b>Henri <span class="a-completer">Nom</span></b>
+          <i>dit Bon Papa Henri</i>
+          <span class="lien">et</span>
+          <b>Suzanne <span class="a-completer">Nom</span></b>
+          <i>dite Mamie Suzanne</i>
+          <span class="role">parents de Mady</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <p class="note">
+    L'arbre s'arrête volontairement à cette génération, et ne montre pas les
+    frères et sœurs de ces quatre personnes : au-delà, il deviendrait
+    illisible.
+  </p>
+
+  <h2>Grand-Père et Mady, et leur descendance</h2>
+
+  <div class="arbre">
+    <ul class="racine">
+      <li>
+        <details open>
+          <summary>
+            <b>Grand-Père</b> <span class="a-completer">prénom et nom</span>
+            <span class="lien">et</span>
+            <b>Mady</b> <span class="a-completer">nom de jeune fille</span>
+          </summary>
+
+          <ul>
+            <li>
+              <details>
+                <summary>
+                  <b>Elisabeth Domallain</b> <i>(née Magnan)</i>
+                  <span class="role">fille aînée</span>
+                </summary>
+                <ul>
+                  <li><span class="personne a-completer">ses enfants</span></li>
+                </ul>
+              </details>
+            </li>
+
+            <li>
+              <details>
+                <summary>
+                  <b>Anne Rizoulières</b>
+                  <span class="role">autrice de la présentation</span>
+                </summary>
+                <ul>
+                  <li><span class="personne a-completer">ses enfants</span></li>
+                </ul>
+              </details>
+            </li>
+
+            <li>
+              <span class="personne a-completer">
+                leurs autres enfants
+              </span>
+            </li>
+          </ul>
+
+        </details>
+      </li>
+    </ul>
+  </div>
+
+  <p class="note">
+    Cet arbre est en cours de constitution : ce qui est marqué
+    <span class="a-completer">à compléter</span> n'est pas encore connu de
+    celui qui tient le site. Rien n'y est deviné — mieux vaut un arbre
+    incomplet qu'un arbre faux, qu'une génération suivante recopierait sans
+    pouvoir le vérifier.
+  </p>
+
+  <a class="retour" href="../">&larr; Retour aux enregistrements</a>
+
+</main>
+</body>
+</html>

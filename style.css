@@ -144,6 +144,66 @@ dd { margin: 0; }
   font-style: italic;
 }
 
+/* ── Arbre généalogique ── */
+
+.arbre { margin: 0 0 1.75rem; }
+
+.arbre ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  border-left: 1px solid var(--rule);
+}
+
+.arbre ul.racine { padding-left: 0; border-left: 0; }
+
+.arbre li { margin: .5rem 0; }
+
+/* Les <details> natifs portent toute l'interactivité : ni script, ni
+   bibliothèque, donc rien qui puisse cesser de fonctionner un jour. */
+.arbre summary {
+  cursor: pointer;
+  padding: .3rem .4rem .3rem 0;
+  border-radius: 4px;
+}
+
+.arbre summary:hover { color: var(--accent); }
+
+.arbre summary::marker { color: var(--ink-soft); }
+
+.arbre .personne { display: inline-block; padding: .3rem 0; }
+
+.arbre b { font-weight: 600; }
+
+.arbre i { font-style: italic; color: var(--ink-soft); }
+
+.arbre .lien { color: var(--ink-soft); padding: 0 .15rem; }
+
+.arbre .vie,
+.arbre .role {
+  font-size: .875rem;
+  color: var(--ink-soft);
+}
+
+.arbre .role::before { content: " — "; }
+
+/* Un trou dans l'arbre se voit. C'est voulu : il appelle à être comblé,
+   au lieu de laisser croire que la branche s'arrête là. */
+.a-completer {
+  font-style: italic;
+  color: var(--ink-soft);
+  border-bottom: 1px dotted var(--rule);
+}
+
+.a-completer::before { content: "à compléter"; }
+.a-completer:not(:empty)::before { content: none; }
+
+.note {
+  font-size: .9375rem;
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+}
+
 a { color: var(--accent); }
 
 .retour {

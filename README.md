@@ -55,6 +55,7 @@ Dans le dépôt, cela correspond à :
 index.html        ← la page d'accueil, qui liste tout
 style.css         ← l'apparence, commune à toutes les pages
 audio/            ← les fichiers .mp3
+arbre/index.html  ← l'arbre généalogique
 01/index.html     ← la page du premier enregistrement
 02/index.html     ← le deuxième, et ainsi de suite
 ```
@@ -79,6 +80,18 @@ dans le code. Si le site déménage un jour, rien n'est à réécrire.
    l'endroit exact.
 6. Enregistrer. Le site se met à jour tout seul en une minute environ.
 
+### Compléter l'arbre généalogique
+
+Tout l'arbre tient dans `arbre/index.html`, en haut duquel un commentaire
+montre le « bloc personne » à recopier. Une personne se déroule en cliquant
+sur son nom : c'est une fonction native du navigateur, il n'y a aucun
+programme derrière, donc rien qui puisse cesser de marcher un jour.
+
+Ce qui est marqué *à compléter* est ce qu'on ignorait au moment d'écrire la
+page. **Ne jamais deviner pour combler un trou** : un arbre faux se recopie de
+génération en génération sans que personne puisse plus le vérifier, alors
+qu'un trou, lui, appelle une question à quelqu'un qui sait encore.
+
 ### Modifier le texte d'une page
 
 Sur github.com, ouvrir le fichier, cliquer sur l'icône en forme de crayon,
@@ -94,9 +107,12 @@ page ne bouge pas, donc les QR codes déjà imprimés restent valables.
 ## Ce à quoi il faut faire attention
 
 - **Ce dépôt est public.** N'importe qui ayant l'adresse peut écouter et
-  télécharger. C'était le but — les membres de la famille ne doivent pas avoir
-  à créer de compte. Mais cela vaut d'y réfléchir avant de mettre en ligne un
-  enregistrement où des personnes vivantes sont nommées ou reconnaissables.
+  récupérer les fichiers. C'était le but — les membres de la famille ne doivent
+  pas avoir à créer de compte. Mais cela vaut d'y réfléchir avant de mettre en
+  ligne un enregistrement où des personnes vivantes sont nommées ou
+  reconnaissables. Les pages ne proposent volontairement pas de bouton de
+  téléchargement, mais que ce soit clair : **ce n'est pas une protection**, le
+  fichier reste accessible à qui sait regarder.
 - **Le fichier maître ne se remplace jamais.** Une version nettoyée,
   ré-égalisée ou compressée se range **à côté** de l'original, jamais à sa
   place. On peut toujours refaire une version d'écoute à partir du maître ;
