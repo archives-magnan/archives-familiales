@@ -4,12 +4,25 @@
 
 :root {
   color-scheme: light dark;
+
   --bg:        #faf7f2;
   --surface:   #fffdf9;
+  --voile:     #f4efe6;
   --ink:       #221f1b;
   --ink-soft:  #6d655b;
   --rule:      #e4ddd2;
-  --accent:    #7c4a24;
+  --accent:    #8a4b22;
+
+  /* Une couleur par génération, comme sur l'arbre de travail de la famille.
+     La couleur n'est pas décorative : elle dit à quelle génération on est.
+     Teintes sourdes, pas des pastels — c'est une archive, pas un organigramme. */
+  --gen1: #7a5285;   /* Albert et Mady */
+  --gen2: #3d6398;   /* leurs enfants */
+  --gen3: #2f7a6c;   /* leurs petits-enfants */
+  --gen4: #b05c45;   /* leurs arrière-petits-enfants */
+
+  --largeur:       46rem;
+  --largeur-large: 68rem;
 }
 
 /* Le thème sombre s'applique dans deux cas : le système le demande et le
@@ -18,35 +31,79 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg:       #141210;
-    --surface:  #1d1a16;
+    --surface:  #1e1b17;
+    --voile:    #1a1714;
     --ink:      #ebe5db;
     --ink-soft: #a29888;
-    --rule:     #322d26;
-    --accent:   #d8a874;
+    --rule:     #332e27;
+    --accent:   #dda36b;
+
+    --gen1: #b797c4;
+    --gen2: #8aaede;
+    --gen3: #6cc0ae;
+    --gen4: #e29f87;
   }
 }
 
 :root[data-theme="dark"] {
   --bg:       #141210;
-  --surface:  #1d1a16;
+  --surface:  #1e1b17;
+  --voile:    #1a1714;
   --ink:      #ebe5db;
   --ink-soft: #a29888;
-  --rule:     #322d26;
-  --accent:   #d8a874;
+  --rule:     #332e27;
+  --accent:   #dda36b;
+
+  --gen1: #b797c4;
+  --gen2: #8aaede;
+  --gen3: #6cc0ae;
+  --gen4: #e29f87;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 2rem 1.25rem 5rem;
+  padding: 0 0 5rem;
   background: var(--bg);
   color: var(--ink);
   font: 1.0625rem/1.7 Georgia, "Iowan Old Style", "Times New Roman", serif;
   -webkit-text-size-adjust: 100%;
 }
 
-main { max-width: 34rem; margin: 0 auto; }
+main {
+  max-width: var(--largeur);
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0;
+}
+
+/* L'arbre a besoin de plus de place que du texte suivi. */
+main.large { max-width: var(--largeur-large); }
+
+h1 {
+  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+  line-height: 1.2;
+  margin: 0 0 .35rem;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.lede {
+  color: var(--ink-soft);
+  margin: 0 0 2.5rem;
+  font-size: 1.125rem;
+}
+
+h2 {
+  font-size: .8125rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+}
 
 /* ── Barre de navigation ──
    Recopiée à l'identique dans chaque page : le site n'a pas de logiciel de
@@ -55,20 +112,23 @@ main { max-width: 34rem; margin: 0 auto; }
    profondeur de la page (« ../ » depuis un sous-dossier). */
 
 .barre {
-  max-width: 34rem;
-  margin: 0 auto 2.5rem;
-  padding-bottom: .9rem;
+  background: var(--surface);
   border-bottom: 1px solid var(--rule);
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.barre nav {
+.barre > div {
+  max-width: var(--largeur-large);
+  margin: 0 auto;
+  padding: .85rem 1.5rem;
   display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
 }
+
+.barre nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
 .barre a {
   color: var(--ink-soft);
@@ -83,6 +143,7 @@ main { max-width: 34rem; margin: 0 auto; }
 .barre [aria-current="page"] {
   color: var(--ink);
   font-weight: 600;
+  box-shadow: 0 2px 0 var(--accent);
 }
 
 .barre button {
@@ -92,14 +153,11 @@ main { max-width: 34rem; margin: 0 auto; }
   border-radius: 999px;
   color: var(--ink-soft);
   cursor: pointer;
-  padding: .35rem .5rem;
+  padding: .4rem .55rem;
   line-height: 0;
 }
 
-.barre button:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
+.barre button:hover { color: var(--accent); border-color: var(--accent); }
 
 .barre button svg { width: 1.05rem; height: 1.05rem; }
 
@@ -115,25 +173,16 @@ main { max-width: 34rem; margin: 0 auto; }
 
 :root[data-theme="dark"] .icone-lune { display: none; }
 :root[data-theme="dark"] .icone-soleil { display: block; }
-
 :root[data-theme="light"] .icone-lune { display: block; }
 :root[data-theme="light"] .icone-soleil { display: none; }
 
-h1 {
-  font-size: 1.75rem;
-  line-height: 1.25;
-  margin: 0 0 .35rem;
-  font-weight: 600;
-}
-
-.lede {
-  color: var(--ink-soft);
-  margin: 0 0 2.5rem;
-}
-
 /* ── Texte de présentation (page d'accueil) ── */
 
-.presentation { margin: 1.5rem 0 1rem; }
+.presentation {
+  margin: 1.75rem 0 1rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--gen1);
+}
 
 .presentation p { margin: 0 0 1.25rem; }
 
@@ -151,24 +200,34 @@ h1 {
   color: var(--ink-soft);
 }
 
-/* ── Liste des enregistrements (page d'accueil) ── */
+/* ── Liste des enregistrements ── */
 
-.pistes { list-style: none; margin: 0; padding: 0; }
-
-.pistes li { margin: 0 0 .75rem; }
+.pistes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .85rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+}
 
 .pistes a {
   display: block;
-  padding: 1rem 1.1rem;
+  height: 100%;
+  padding: 1.1rem 1.2rem;
   background: var(--surface);
   border: 1px solid var(--rule);
+  border-left: 3px solid var(--gen2);
   border-radius: 6px;
   color: inherit;
   text-decoration: none;
 }
 
 .pistes a:hover,
-.pistes a:focus-visible { border-color: var(--accent); }
+.pistes a:focus-visible {
+  border-color: var(--accent);
+  border-left-color: var(--accent);
+}
 
 .pistes .titre { display: block; font-weight: 600; }
 
@@ -180,41 +239,13 @@ h1 {
 
 /* ── Page d'un enregistrement ── */
 
-.dates {
-  color: var(--ink-soft);
-  font-style: italic;
-  margin: 0 0 2rem;
-}
+.dates { color: var(--ink-soft); font-style: italic; margin: 0 0 2rem; }
 
-audio {
-  width: 100%;
-  margin: 0 0 .75rem;
-}
-
-.telecharger {
-  font-size: .875rem;
-  color: var(--ink-soft);
-  margin: 0 0 2.5rem;
-}
-
-h2 {
-  font-size: .8125rem;
-  letter-spacing: .09em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  font-weight: 600;
-  margin: 0 0 .9rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--rule);
-}
+audio { width: 100%; margin: 0 0 2.5rem; }
 
 dl { margin: 0 0 1.5rem; }
 
-dt {
-  font-size: .8125rem;
-  color: var(--ink-soft);
-  margin-top: .85rem;
-}
+dt { font-size: .8125rem; color: var(--ink-soft); margin-top: .85rem; }
 
 dd { margin: 0; }
 
@@ -227,9 +258,36 @@ dd { margin: 0; }
   font-style: italic;
 }
 
+/* ── Transcription ── */
+
+.transcription {
+  background: var(--voile);
+  border-radius: 6px;
+  padding: 1.25rem 1.4rem;
+  margin: 0 0 2rem;
+}
+
+.transcription p { margin: 0 0 1rem; }
+.transcription p:last-child { margin-bottom: 0; }
+
 /* ── Arbre généalogique ── */
 
 .arbre { margin: 0 0 1.75rem; }
+
+.branches {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  align-items: start;
+}
+
+.branche {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--gen2);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+}
 
 .arbre ul {
   list-style: none;
@@ -244,31 +302,51 @@ dd { margin: 0; }
 
 /* Les <details> natifs portent toute l'interactivité : ni script, ni
    bibliothèque, donc rien qui puisse cesser de fonctionner un jour. */
-.arbre summary {
-  cursor: pointer;
-  padding: .3rem .4rem .3rem 0;
-  border-radius: 4px;
-}
-
+.arbre summary { cursor: pointer; padding: .3rem .4rem .3rem 0; }
 .arbre summary:hover { color: var(--accent); }
-
 .arbre summary::marker { color: var(--ink-soft); }
 
 .arbre .personne { display: inline-block; padding: .3rem 0; }
 
 .arbre b { font-weight: 600; }
-
 .arbre i { font-style: italic; color: var(--ink-soft); }
-
 .arbre .lien { color: var(--ink-soft); padding: 0 .15rem; }
 
 .arbre .vie,
-.arbre .role {
+.arbre .role { font-size: .875rem; color: var(--ink-soft); }
+
+.arbre .role::before { content: " — "; }
+
+/* La couleur dit la génération. */
+.g1 b { color: var(--gen1); }
+.g2 b { color: var(--gen2); }
+.g3 b { color: var(--gen3); }
+.g4 b { color: var(--gen4); }
+
+.legende {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0 0 2rem;
+  padding: 0;
   font-size: .875rem;
   color: var(--ink-soft);
 }
 
-.arbre .role::before { content: " — "; }
+.legende span::before {
+  content: "";
+  display: inline-block;
+  width: .6rem;
+  height: .6rem;
+  border-radius: 2px;
+  margin-right: .4rem;
+}
+
+.legende .l1::before { background: var(--gen1); }
+.legende .l2::before { background: var(--gen2); }
+.legende .l3::before { background: var(--gen3); }
+.legende .l4::before { background: var(--gen4); }
 
 /* Un trou dans l'arbre se voit. C'est voulu : il appelle à être comblé,
    au lieu de laisser croire que la branche s'arrête là. */
@@ -281,16 +359,48 @@ dd { margin: 0; }
 .a-completer::before { content: "à compléter"; }
 .a-completer:not(:empty)::before { content: none; }
 
-.note {
-  font-size: .9375rem;
-  color: var(--ink-soft);
-  margin: 0 0 2rem;
-}
+/* ── Divers ── */
+
+.note { font-size: .9375rem; color: var(--ink-soft); margin: 0 0 2rem; }
 
 a { color: var(--accent); }
 
-.retour {
-  display: inline-block;
-  margin-top: 2.5rem;
-  font-size: .9375rem;
+.retour { display: inline-block; margin-top: 2.5rem; font-size: .9375rem; }
+
+.pied {
+  max-width: var(--largeur-large);
+  margin: 4rem auto 0;
+  padding: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: .875rem;
+  color: var(--ink-soft);
+}
+
+.pied p { margin: 0; }
+
+/* ── Impression ──
+   Le livre de famille est imprimé ; quelqu'un voudra imprimer l'arbre. On
+   déplie alors tout ce qui est repliable, et on retire ce qui ne sert qu'à
+   l'écran. */
+@media print {
+  .barre, .retour, audio { display: none !important; }
+
+  body { background: #fff; color: #000; padding: 0; }
+
+  main, main.large { max-width: none; padding: 0; }
+
+  /* Déplier tout l'arbre. Deux écritures : l'ancienne, que les navigateurs
+     appliquent depuis toujours, et ::details-content pour les versions
+     récentes de Chrome, qui masquent autrement. */
+  details:not([open]) > *:not(summary) { display: block !important; }
+  details::details-content {
+    content-visibility: visible !important;
+    display: block !important;
+  }
+
+  .branche { border: 1px solid #ccc; break-inside: avoid; }
+
+  a { color: #000; text-decoration: none; }
+
+  .pied { border-top: 1px solid #ccc; color: #444; }
 }

@@ -53,6 +53,7 @@ Dans le dépôt, cela correspond à :
 
 ```
 index.html        ← la page d'accueil, qui liste tout
+404.html          ← la page affichée quand une adresse n'existe pas
 style.css         ← l'apparence, commune à toutes les pages
 theme.js          ← le bouton clair/sombre, le seul programme du site
 audio/            ← les fichiers .mp3
@@ -108,6 +109,18 @@ C'est le seul programme du site (`theme.js`), et il ne fait que ça. Si le
 navigateur refuse de l'exécuter, les pages restent parfaitement lisibles :
 elles suivent alors le réglage clair/sombre du système, et le bouton ne
 s'affiche pas du tout. Aucune page ne dépend de lui pour être lue.
+
+### Transcrire un enregistrement
+
+Chaque page d'écoute réserve une place à la transcription, au-dessus de la
+fiche. C'est ce qui rend une bande audible quand la voix ne l'est plus tout à
+fait : on peut lire ce qu'on n'entend pas, chercher un mot dans la page, et le
+texte survivra au format audio lui-même.
+
+La méthode : une première passe par un outil de transcription automatique,
+puis une correction à l'oreille par quelqu'un de la famille — c'est là que se
+rattrapent les noms propres et les lieux, qu'aucune machine ne devine. **Ce
+qui reste incompris se note `[inaudible]`**, jamais comblé au jugé.
 
 ### Modifier le texte d'une page
 
