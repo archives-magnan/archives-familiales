@@ -48,6 +48,12 @@ h1 {
   margin: 0 0 2.5rem;
 }
 
+/* ── Texte de présentation (page d'accueil) ── */
+
+.presentation { margin: 1.5rem 0 1rem; }
+
+.presentation p { margin: 0 0 1.25rem; }
+
 /* ── Liste des enregistrements (page d'accueil) ── */
 
 .pistes { list-style: none; margin: 0; padding: 0; }
