@@ -25,6 +25,7 @@
   // 2. Brancher le bouton une fois la page construite.
   document.addEventListener('DOMContentLoaded', function () {
     brancherImpression();
+    brancherVues();
 
     var bouton = document.getElementById('bascule-theme');
     if (!bouton) return;
@@ -47,6 +48,59 @@
       try { localStorage.setItem('theme', suivant); } catch (e) {}
     });
   });
+
+  /* Les deux vues de l'arbre.
+   *
+   * Les deux lisent le même balisage : il n'existe qu'un seul exemplaire des
+   * noms dans la page, et ajouter quelqu'un le fait apparaître dans les deux
+   * vues. Seule la mise en forme change, plus le fait que l'arborescence
+   * déplie tout — une arborescence à moitié repliée ne montre rien.
+   *
+   * Sans ce fichier, les boutons ne s'affichent pas et la page reste en vue
+   * liste, qui est complète : on ne perd aucune information, seulement un
+   * confort. */
+  function brancherVues() {
+    var vues = document.getElementById('vues');
+    var arbre = document.getElementById('arbre-famille');
+    if (!vues || !arbre) return;
+
+    vues.hidden = false;
+    var boutons = vues.querySelectorAll('button');
+    var replieesEnListe = null;   // l'état de la vue liste, mis de côté
+
+    for (var i = 0; i < boutons.length; i++) {
+      boutons[i].addEventListener('click', function () {
+        var vue = this.getAttribute('data-vue');
+
+        for (var j = 0; j < boutons.length; j++) {
+          boutons[j].setAttribute('aria-pressed',
+            boutons[j] === this ? 'true' : 'false');
+        }
+
+        var branches = arbre.querySelectorAll('details');
+
+        if (vue === 'arborescence') {
+          // Mémoriser ce que le lecteur avait replié, puis tout ouvrir.
+          if (replieesEnListe === null) {
+            replieesEnListe = [];
+            for (var k = 0; k < branches.length; k++) {
+              if (!branches[k].open) replieesEnListe.push(branches[k]);
+            }
+          }
+          for (var m = 0; m < branches.length; m++) branches[m].open = true;
+          arbre.classList.add('arborescence');
+        } else {
+          arbre.classList.remove('arborescence');
+          if (replieesEnListe) {
+            for (var n = 0; n < replieesEnListe.length; n++) {
+              replieesEnListe[n].open = false;
+            }
+            replieesEnListe = null;
+          }
+        }
+      });
+    }
+  }
 
   /* Imprimer l'arbre.
    *

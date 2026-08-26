@@ -269,21 +269,6 @@ dd { margin: 0; }
 
 .arbre { margin: 0 0 1.75rem; }
 
-.branches {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
-  align-items: start;
-}
-
-.branche {
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-top: 3px solid var(--gen2);
-  border-radius: 6px;
-  padding: 1rem 1.2rem;
-}
-
 .arbre ul {
   list-style: none;
   margin: 0;
@@ -312,14 +297,95 @@ dd { margin: 0; }
 
 .arbre .role::before { content: " — "; }
 
-.branche > .couple {
-  margin: 0 0 .75rem;
-  padding-bottom: .6rem;
-  border-bottom: 1px solid var(--rule);
-  font-size: 1.0625rem;
+/* ── Bascule entre les deux vues ── */
+
+.vues {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 2px;
+  margin: 0 0 1.5rem;
+  background: var(--surface);
 }
 
-.branche .numero { color: var(--ink-soft); font-weight: 400; }
+.vues button {
+  font: inherit;
+  font-size: .875rem;
+  border: 0;
+  background: none;
+  color: var(--ink-soft);
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.vues button[aria-pressed="true"] {
+  background: var(--voile);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── Vue « arborescence » ──
+   Le même balisage que la vue liste, redessiné : chaque personne devient un
+   cadre, et des traits relient les cadres à leur parent. L'arbre se déploie
+   vers le bas, jamais vers la droite : il doit rester lisible sur un
+   téléphone, puisqu'on y arrive par un QR code. */
+
+.arborescence ul { border-left: 0; padding-left: 1.75rem; }
+.arborescence ul.racine { padding-left: 0; }
+
+.arborescence li {
+  position: relative;
+  margin: 0;
+  padding: .3rem 0;
+}
+
+/* Le trait vertical qui descend le long d'une fratrie. Il s'arrête au
+   dernier enfant, sinon il pendrait dans le vide. */
+.arborescence ul:not(.racine) > li::before {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 0;
+  height: 100%;
+  border-left: 1px solid var(--rule);
+}
+
+.arborescence ul:not(.racine) > li:last-child::before { height: 1.35rem; }
+
+/* Le trait horizontal qui rejoint le cadre. */
+.arborescence ul:not(.racine) > li::after {
+  content: "";
+  position: absolute;
+  left: -1rem;
+  top: 1.35rem;
+  width: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.arborescence summary,
+.arborescence .personne {
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left-width: 3px;
+  border-radius: 5px;
+  padding: .45rem .8rem;
+  margin: .15rem 0;
+}
+
+.arborescence summary { list-style: none; }
+.arborescence summary::marker,
+.arborescence summary::-webkit-details-marker { display: none; content: ""; }
+
+.arborescence .g1 > summary, .arborescence .g1 > .personne { border-left-color: var(--gen1); }
+.arborescence .g2 > summary, .arborescence .g2 > .personne { border-left-color: var(--gen2); }
+.arborescence .g3 > summary, .arborescence .g3 > .personne { border-left-color: var(--gen3); }
+.arborescence .g4 > summary, .arborescence .g4 > .personne { border-left-color: var(--gen4); }
+
+/* En arborescence, on ne replie plus rien : le curseur ne doit pas le
+   laisser croire. */
+.arborescence summary { cursor: default; }
 
 /* La couleur dit la génération. */
 .g1 b { color: var(--gen1); }
@@ -405,7 +471,8 @@ a { color: var(--accent); }
     display: block !important;
   }
 
-  .branche { border: 1px solid #ccc; break-inside: avoid; }
+  .vues { display: none !important; }
+  .arbre li { break-inside: avoid; }
 
   a { color: #000; text-decoration: none; }
 

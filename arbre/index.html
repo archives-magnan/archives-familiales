@@ -28,9 +28,16 @@
 
   <h1>L'arbre de la famille</h1>
   <p class="lede">
-    Cliquez sur un nom pour dérouler sa descendance. La couleur indique la
-    génération.
+    Le cadre de famille des personnes qu'on entend dans ces archives.
   </p>
+
+  <!-- Les deux vues lisent le MÊME arbre, plus bas : il n'existe qu'un seul
+       exemplaire des noms. Ajouter quelqu'un le fait apparaître dans les deux.
+       Ne jamais dupliquer l'arbre pour créer une troisième vue. -->
+  <div class="vues" id="vues" hidden>
+    <button type="button" data-vue="liste" aria-pressed="true">Liste</button>
+    <button type="button" data-vue="arborescence" aria-pressed="false">Arborescence</button>
+  </div>
 
   <ul class="legende">
     <li><span class="l1">Albert et Mady</span></li>
@@ -38,6 +45,37 @@
     <li><span class="l3">Leurs petits-enfants</span></li>
     <li><span class="l4">Leurs arrière-petits-enfants</span></li>
   </ul>
+
+  <h2>Les parents d'Albert et de Mady</h2>
+
+  <div class="arbre">
+    <ul class="racine">
+      <li class="g1">
+        <span class="personne">
+          <b>Maurice Magnan</b>
+          <span class="lien">et</span>
+          <b>Jeanne</b> <span class="a-completer">nom de jeune fille</span>
+          <span class="role">parents d'Albert</span>
+        </span>
+      </li>
+      <li class="g1">
+        <span class="personne">
+          <b>Henri Bourges</b> <i>dit Bon Papa</i>
+          <span class="lien">et</span>
+          <b>Suzanne Bourges</b> <i>dite Mamie Suzanne</i>
+          <span class="role">parents de Mady</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <p class="note">
+    L'arbre s'arrête volontairement à cette génération, et ne montre pas les
+    frères et sœurs de ces quatre personnes : au-delà, il deviendrait
+    illisible.
+  </p>
+
+  <h2>Albert et Mady, et leur descendance</h2>
 
   <!-- ─────────────────────────────────────────────────────────────
        COMMENT AJOUTER QUELQU'UN
@@ -57,215 +95,182 @@
          <li class="g4"><span class="personne"><b>Prénom</b></span></li>
        suffit.
 
+       Deux règles tenues sur cet arbre :
+         — aucune date de naissance pour une personne vivante ;
+         — ce qu'on ignore se laisse en <span class="a-completer">,
+           jamais deviné. Un arbre faux est pire qu'un arbre incomplet.
+
        Pour lier une personne à ses enregistrements, ajouter dans le
        <summary> : <a href="../01/">🎧</a>
-
-       Une information qu'on ignore se laisse en <span class="a-completer">,
-       jamais devinée. Un arbre faux est pire qu'un arbre incomplet.
        ───────────────────────────────────────────────────────────── -->
 
-  <h2>Les parents d'Albert et de Mady</h2>
-
-  <div class="arbre">
-    <ul class="racine branches-simples">
-      <li class="g1">
-        <span class="personne">
-          <b>Maurice Magnan</b>
-          <span class="lien">et</span>
-          <b>Jeanne</b> <span class="a-completer">nom de jeune fille</span>
-          <span class="role">parents d'Albert</span>
-        </span>
-      </li>
-      <li class="g1">
-        <span class="personne">
-          <b>Henri Bourges</b> <i>dit Bon Papa Henri</i>
-          <span class="lien">et</span>
-          <b>Suzanne Bourges</b> <i>dite Mamie Suzanne</i>
-          <span class="role">parents de Mady</span>
-        </span>
-      </li>
-    </ul>
-  </div>
-
-  <p class="note">
-    L'arbre s'arrête volontairement à cette génération, et ne montre pas les
-    frères et sœurs de ces quatre personnes : au-delà, il deviendrait
-    illisible.
-  </p>
-
-  <h2>Albert et Mady</h2>
-
-  <div class="arbre">
+  <div class="arbre" id="arbre-famille">
     <ul class="racine">
-      <li class="g1">
-        <span class="personne">
-          <b>Albert Magnan</b>
-          <span class="lien">et</span>
-          <b>Marie-Madeleine Bourges</b> <i>dite Mady</i>
-          <span class="vie"><span class="a-completer">dates à compléter</span></span>
-        </span>
-      </li>
+        <li class="g1">
+          <details open>
+            <summary><b>Albert Magnan</b> <i>dit Grand-Père</i> <span class="lien">et</span> <b>Marie-Madeleine Bourges</b> <i>dite Mady</i></summary>
+            <ul>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">1.</span> <b>Elisabeth Magnan</b> <span class="lien">et</span> <b>Denis Domallain</b></summary>
+              <ul>
+            <li class="g3">
+              <details>
+                <summary><b>Olivier Domallain</b> <span class="lien">et</span> <b>Coralie Bourdon</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Arthur</b></span></li>
+              <li class="g4"><span class="personne"><b>Victor</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3">
+              <details>
+                <summary><b>Etienne Domallain</b> <span class="lien">et</span> <b>Séverine Archer</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Louis</b></span></li>
+              <li class="g4"><span class="personne"><b>Antoine</b></span></li>
+              <li class="g4"><span class="personne"><b>Léonie</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3">
+              <details>
+                <summary><b>Yves Domallain</b> <span class="lien">et</span> <b>Céline Le Corf</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Suzanne</b></span></li>
+              <li class="g4"><span class="personne"><b>Jean</b></span></li>
+              <li class="g4"><span class="personne"><b>Gabrielle</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3">
+              <details>
+                <summary><b>Hélène Domallain</b> <span class="lien">et</span> <b>Sébastien Ebrard</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Clémence</b></span></li>
+              <li class="g4"><span class="personne"><b>Capucine</b></span></li>
+              <li class="g4"><span class="personne"><b>Anaïs</b></span></li>
+                </ul>
+              </details>
+            </li>
+              </ul>
+            </details>
+          </li>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">2.</span> <b>Maurice Magnan</b> <span class="lien">et</span> <b>Marie-Françoise Gérardin</b></summary>
+              <ul>
+            <li class="g3">
+              <details>
+                <summary><b>Loïc Magnan</b> <span class="lien">et</span> <b>Aurélie Chaplin</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Gaston</b></span></li>
+              <li class="g4"><span class="personne"><b>Marcus</b></span></li>
+              <li class="g4"><span class="personne"><b>Sixtine</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3">
+              <details>
+                <summary><b>Emmanuelle Magnan</b> <span class="lien">et</span> <b>Sylvain Jeannin</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Juliette</b></span></li>
+              <li class="g4"><span class="personne"><b>Louise</b></span></li>
+              <li class="g4"><span class="personne"><b>Philippe</b></span></li>
+              <li class="g4"><span class="personne"><b>Raphaelle</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3">
+              <details>
+                <summary><b>Nicolas Magnan</b> <span class="lien">et</span> <b>Laura Hézard</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Antoine</b></span></li>
+              <li class="g4"><span class="personne"><b>Léa</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3"><span class="personne"><b>Eric Magnan</b> <span class="lien">et</span> <b>Maguelone Girardot</b> <span class="role">jumeau de Ségolène</span></span></li>
+            <li class="g3">
+              <details>
+                <summary><b>Ségolène Magnan</b> <span class="lien">et</span> <b>Samuel Martinot-Lagarde</b> <span class="role">jumelle d'Eric</span></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Maylis</b></span></li>
+              <li class="g4"><span class="personne"><b>Eloi</b></span></li>
+              <li class="g4"><span class="personne"><b>Timothée</b></span></li>
+                </ul>
+              </details>
+            </li>
+              </ul>
+            </details>
+          </li>
+          <li class="g2"><span class="personne"><span class="numero">3.</span> <b>Rémy Magnan</b> <span class="lien">et</span> <b>Danièle</b> <span class="a-completer">nom à retrouver</span></span></li>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">4.</span> <b>Béatrice Magnan</b> <span class="lien">et</span> <b>Jean-Marc Chauvetet</b></summary>
+              <ul>
+            <li class="g3">
+              <details>
+                <summary><b>Cécile Chauvetet</b> <span class="lien">et</span> <b>Martin De La Taille</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Léon</b></span></li>
+              <li class="g4"><span class="personne"><b>Marie</b></span></li>
+              <li class="g4"><span class="personne"><span class="a-completer">prénom à retrouver</span></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3"><span class="personne"><b>Laurent Chauvetet</b></span></li>
+            <li class="g3">
+              <details>
+                <summary><b>Emilien Chauvetet</b> <span class="lien">et</span> <b>Marine Trombetta</b></summary>
+                <ul>
+              <li class="g4"><span class="personne"><b>Jules</b></span></li>
+              <li class="g4"><span class="personne"><b>Suzanne</b></span></li>
+                </ul>
+              </details>
+            </li>
+            <li class="g3"><span class="personne"><b>Paul Chauvetet</b> <span class="lien">et</span> <b>Candice</b> <span class="a-completer">nom à retrouver</span></span></li>
+            <li class="g3"><span class="personne"><b>Alban Chauvetet</b></span></li>
+            <li class="g3"><span class="personne"><b>Mathilde Chauvetet</b></span></li>
+              </ul>
+            </details>
+          </li>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">5.</span> <b>Christophe Magnan</b> <span class="lien">et</span> <b>Sabine Morin</b> <span class="role">jumeau de Pascale</span></summary>
+              <ul>
+            <li class="g3"><span class="personne"><b>Sylvain Magnan</b></span></li>
+            <li class="g3"><span class="personne"><b>Delphine Magnan</b></span></li>
+            <li class="g3"><span class="personne"><b>Thibaut Magnan</b></span></li>
+              </ul>
+            </details>
+          </li>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">6.</span> <b>Pascale Magnan</b> <span class="lien">et</span> <b>Olivier Pauze</b> <span class="role">jumelle de Christophe</span></summary>
+              <ul>
+            <li class="g3"><span class="personne"><b>Jean-Baptiste Pauze</b></span></li>
+            <li class="g3"><span class="personne"><b>Claire Pauze</b> <span class="lien">et</span> <b>Alexandre Roux</b></span></li>
+            <li class="g3"><span class="personne"><b>Clément Pauze</b></span></li>
+              </ul>
+            </details>
+          </li>
+          <li class="g2">
+            <details>
+              <summary><span class="numero">7.</span> <b>Anne Magnan</b> <span class="lien">et</span> <b>Bruno Rizoulières</b></summary>
+              <ul>
+            <li class="g3"><span class="personne"><b>Samuel Rizoulières</b></span></li>
+            <li class="g3"><span class="personne"><b>Lucie Rizoulières</b> <span class="vie">née et décédée en 2001</span></span></li>
+            <li class="g3"><span class="personne"><b>Mayeul Rizoulières</b></span></li>
+            <li class="g3"><span class="personne"><b>Marion Rizoulières</b></span></li>
+            <li class="g3"><span class="personne"><b>Priscille Rizoulières</b></span></li>
+              </ul>
+            </details>
+          </li>
+            </ul>
+          </details>
+        </li>
     </ul>
-  </div>
-
-  <h2>Leurs sept enfants et leur descendance</h2>
-
-  <p class="note">
-    Les sept sont dans l'ordre de naissance. Déroulez un nom pour voir ses
-    enfants.
-  </p>
-
-  <div class="arbre">
-    <div class="branches">
-      <div class="branche">
-        <p class="couple g2"><span class="numero">1.</span> <b>Elisabeth Magnan</b> <span class="lien">et</span> <b>Denis Domallain</b></p>
-        <ul class="racine">
-          <li class="g3">
-            <details>
-              <summary><b>Olivier Domallain</b> <span class="lien">et</span> <b>Coralie Bourdon</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Arthur</b></span></li>
-                <li class="g4"><span class="personne"><b>Victor</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3">
-            <details>
-              <summary><b>Etienne Domallain</b> <span class="lien">et</span> <b>Séverine Archer</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Louis</b></span></li>
-                <li class="g4"><span class="personne"><b>Antoine</b></span></li>
-                <li class="g4"><span class="personne"><b>Léonie</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3">
-            <details>
-              <summary><b>Yves Domallain</b> <span class="lien">et</span> <b>Céline Le Corf</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Suzanne</b></span></li>
-                <li class="g4"><span class="personne"><b>Jean</b></span></li>
-                <li class="g4"><span class="personne"><b>Gabrielle</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3">
-            <details>
-              <summary><b>Hélène Domallain</b> <span class="lien">et</span> <b>Sébastien Ebrard</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Clémence</b></span></li>
-                <li class="g4"><span class="personne"><b>Capucine</b></span></li>
-                <li class="g4"><span class="personne"><b>Anaïs</b></span></li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">2.</span> <b>Maurice Magnan</b> <span class="lien">et</span> <b>Marie-Françoise Gérardin</b></p>
-        <ul class="racine">
-          <li class="g3">
-            <details>
-              <summary><b>Loïc Magnan</b> <span class="lien">et</span> <b>Aurélie Chaplin</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Gaston</b></span></li>
-                <li class="g4"><span class="personne"><b>Marcus</b></span></li>
-                <li class="g4"><span class="personne"><b>Sixtine</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3">
-            <details>
-              <summary><b>Emmanuelle Magnan</b> <span class="lien">et</span> <b>Sylvain Jeannin</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Juliette</b></span></li>
-                <li class="g4"><span class="personne"><b>Louise</b></span></li>
-                <li class="g4"><span class="personne"><b>Philippe</b></span></li>
-                <li class="g4"><span class="personne"><b>Raphaelle</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3">
-            <details>
-              <summary><b>Nicolas Magnan</b> <span class="lien">et</span> <b>Laura Hézard</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Antoine</b></span></li>
-                <li class="g4"><span class="personne"><b>Léa</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3"><span class="personne"><b>Eric Magnan</b> <span class="lien">et</span> <b>Maguelone Girardot</b></span></li>
-          <li class="g3">
-            <details>
-              <summary><b>Ségolène Magnan</b> <span class="lien">et</span> <b>Samuel Martinot-Lagarde</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Maylis</b></span></li>
-                <li class="g4"><span class="personne"><b>Eloi</b></span></li>
-                <li class="g4"><span class="personne"><b>Timothée</b></span></li>
-              </ul>
-            </details>
-          </li>
-        </ul>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">3.</span> <b>Rémy Magnan</b> <span class="lien">et</span> <b>Danièle</b> <span class="a-completer">nom à retrouver</span></p>
-        <p class="note">Pas de descendance.</p>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">4.</span> <b>Béatrice Magnan</b> <span class="lien">et</span> <b>Jean-Marc Chauvetet</b></p>
-        <ul class="racine">
-          <li class="g3">
-            <details>
-              <summary><b>Cécile Chauvetet</b> <span class="lien">et</span> <b>Martin De La Taille</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Léon</b></span></li>
-                <li class="g4"><span class="personne"><b>Marie</b></span></li>
-                <li class="g4"><span class="personne"><span class="a-completer">prénom à retrouver</span></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3"><span class="personne"><b>Laurent Chauvetet</b></span></li>
-          <li class="g3">
-            <details>
-              <summary><b>Emilien Chauvetet</b> <span class="lien">et</span> <b>Marine Trombetta</b></summary>
-              <ul>
-                <li class="g4"><span class="personne"><b>Jules</b></span></li>
-                <li class="g4"><span class="personne"><b>Suzanne</b></span></li>
-              </ul>
-            </details>
-          </li>
-          <li class="g3"><span class="personne"><b>Paul Chauvetet</b> <span class="lien">et</span> <b>Candice</b> <span class="a-completer">nom à retrouver</span></span></li>
-          <li class="g3"><span class="personne"><b>Alban Chauvetet</b></span></li>
-          <li class="g3"><span class="personne"><b>Mathilde Chauvetet</b></span></li>
-        </ul>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">5.</span> <b>Christophe Magnan</b> <span class="lien">et</span> <b>Sabine Morin</b></p>
-        <ul class="racine">
-          <li class="g3"><span class="personne"><b>Sylvain Magnan</b></span></li>
-          <li class="g3"><span class="personne"><b>Delphine Magnan</b></span></li>
-          <li class="g3"><span class="personne"><b>Thibaut Magnan</b></span></li>
-        </ul>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">6.</span> <b>Pascale Magnan</b> <span class="lien">et</span> <b>Olivier Pauze</b></p>
-        <ul class="racine">
-          <li class="g3"><span class="personne"><b>Jean-Baptiste Pauze</b></span></li>
-          <li class="g3"><span class="personne"><b>Claire Pauze</b> <span class="lien">et</span> <b>Alexandre Roux</b></span></li>
-          <li class="g3"><span class="personne"><b>Clément Pauze</b></span></li>
-        </ul>
-      </div>
-      <div class="branche">
-        <p class="couple g2"><span class="numero">7.</span> <b>Anne Magnan</b> <span class="lien">et</span> <b>Bruno Rizoulières</b></p>
-        <ul class="racine">
-          <li class="g3"><span class="personne"><b>Samuel Rizoulières</b></span></li>
-          <li class="g3"><span class="personne"><b>Lucie Rizoulières</b></span></li>
-          <li class="g3"><span class="personne"><b>Mayeul Rizoulières</b></span></li>
-          <li class="g3"><span class="personne"><b>Marion Rizoulières</b></span></li>
-          <li class="g3"><span class="personne"><b>Priscille Rizoulières</b></span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 
   <p class="note">

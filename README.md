@@ -89,6 +89,13 @@ montre le « bloc personne » à recopier. Une personne se déroule en cliquant
 sur son nom : c'est une fonction native du navigateur, il n'y a aucun
 programme derrière, donc rien qui puisse cesser de marcher un jour.
 
+La page propose deux façons de regarder le même arbre — **Liste**, repliable,
+et **Arborescence**, tout déplié avec des traits reliant chacun à ses parents.
+**Les deux lisent le même texte** : les noms n'existent qu'à un seul endroit
+dans le fichier, et ajouter quelqu'un le fait apparaître dans les deux vues.
+Ne jamais recopier l'arbre pour créer une troisième vue — deux copies finissent
+toujours par diverger.
+
 Ce qui est marqué *à retrouver* est ce qu'on ignorait au moment d'écrire la
 page. **Ne jamais deviner pour combler un trou** : un arbre faux se recopie de
 génération en génération sans que personne puisse plus le vérifier, alors
