@@ -24,6 +24,8 @@
 
   // 2. Brancher le bouton une fois la page construite.
   document.addEventListener('DOMContentLoaded', function () {
+    brancherImpression();
+
     var bouton = document.getElementById('bascule-theme');
     if (!bouton) return;
 
@@ -45,4 +47,31 @@
       try { localStorage.setItem('theme', suivant); } catch (e) {}
     });
   });
+
+  /* Imprimer l'arbre.
+   *
+   * Une branche repliée ne s'imprime pas : le papier n'a pas de bouton. On
+   * déplie donc tout avant l'impression, puis on remet chaque branche comme
+   * le lecteur l'avait laissée.
+   *
+   * La feuille de style tente la même chose de son côté, pour le cas où ce
+   * fichier ne s'exécuterait pas — mais les navigateurs ne s'accordent pas
+   * sur la façon de masquer le contenu d'un <details>, alors qu'ouvrir la
+   * balise, elle, marche partout. */
+  function brancherImpression() {
+    var repliees = [];
+
+    window.addEventListener('beforeprint', function () {
+      repliees = [];
+      var tous = document.querySelectorAll('details');
+      for (var i = 0; i < tous.length; i++) {
+        if (!tous[i].open) { repliees.push(tous[i]); tous[i].open = true; }
+      }
+    });
+
+    window.addEventListener('afterprint', function () {
+      for (var i = 0; i < repliees.length; i++) { repliees[i].open = false; }
+      repliees = [];
+    });
+  }
 })();

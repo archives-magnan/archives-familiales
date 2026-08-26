@@ -89,10 +89,21 @@ montre le « bloc personne » à recopier. Une personne se déroule en cliquant
 sur son nom : c'est une fonction native du navigateur, il n'y a aucun
 programme derrière, donc rien qui puisse cesser de marcher un jour.
 
-Ce qui est marqué *à compléter* est ce qu'on ignorait au moment d'écrire la
+Ce qui est marqué *à retrouver* est ce qu'on ignorait au moment d'écrire la
 page. **Ne jamais deviner pour combler un trou** : un arbre faux se recopie de
 génération en génération sans que personne puisse plus le vérifier, alors
 qu'un trou, lui, appelle une question à quelqu'un qui sait encore.
+
+**Deux règles tenues sur cet arbre**, décidées en famille et à respecter si
+vous le complétez :
+
+- **Aucune date de naissance pour une personne vivante.** Un nom seul n'est
+  pas grand-chose ; un nom accompagné d'une date de naissance et d'une
+  filiation, si. Les dates des personnes décédées, elles, ont leur place.
+- **On ne remonte pas plus haut qu'Albert et Mady et leurs parents**, et on
+  n'affiche pas les frères et sœurs de ces derniers. Ce n'est pas un arbre
+  généalogique complet, c'est le cadre de famille des personnes qu'on entend
+  dans ces archives.
 
 ### Le menu du haut
 
