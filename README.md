@@ -16,7 +16,7 @@ Deux choses, dans deux endroits différents :
 
 | Quoi | Où | À quoi ça sert |
 | :--- | :--- | :--- |
-| **Les fichiers maîtres** | ⟨À COMPLÉTER : dossier Google Drive, disque dur, etc.⟩ | Les originaux de la numérisation, en pleine qualité. On n'y touche jamais. |
+| **Les fichiers maîtres** | Le Google Drive personnel d'**Anne Rizoulières** | Les originaux de la numérisation, en pleine qualité. On n'y touche jamais. |
 | **Le site et les fichiers d'écoute** | Ce dépôt, publié par GitHub Pages | Les pages, et les versions `.mp3` compressées que le site fait jouer. |
 
 Tout ce qui est en ligne tient donc dans **un seul endroit**. Récupérer
@@ -108,9 +108,11 @@ page ne bouge pas, donc les QR codes déjà imprimés restent valables.
   c'est le signe qu'il faut louer un hébergement, pas supprimer des voix.
 - **Un fichier déposé reste dans l'historique** même après suppression. Mieux
   vaut préparer le `.mp3` correctement une fois que de le remplacer cinq fois.
-- **Une seule copie n'est pas une archive.** Ce dépôt peut disparaître avec
-  GitHub. Viser au moins deux copies des fichiers maîtres, chez deux personnes
-  différentes de la famille.
+- **Une seule copie n'est pas une archive.** À ce jour les fichiers maîtres
+  n'existent qu'à un seul endroit : le Drive d'Anne Rizoulières. Un compte
+  fermé, et ils sont perdus — les `.mp3` de ce dépôt ne les remplaceraient pas,
+  ils sont compressés. C'est le point faible du dispositif. Viser au moins deux
+  copies, chez deux personnes différentes de la famille.
 - **Ce dépôt appartient à une organisation GitHub, pas à une personne.** C'est
   volontaire : plusieurs membres de la famille peuvent en être responsables, et
   la transmission ne dépend de la survie d'aucun compte individuel. Si vous
@@ -138,5 +140,11 @@ suivantes.
 
 ## Qui contacter
 
-⟨À COMPLÉTER : les personnes qui s'occupent du projet, et où trouver les
-identifiants du compte GitHub de l'organisation.⟩
+Le projet est tenu par **Samuel Rizoulières**, qui administre l'organisation
+GitHub `archives-magnan`. Les fichiers maîtres sont conservés par **Anne
+Rizoulières**.
+
+Les adresses et numéros ne sont volontairement pas écrits ici : ce dépôt est
+public, et une adresse laissée en clair sur GitHub est récoltée par les robots
+à spam en quelques jours. Un membre de la famille saura retrouver ces deux
+personnes.
