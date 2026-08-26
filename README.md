@@ -214,13 +214,26 @@ page ne bouge pas, donc les QR codes déjà imprimés restent valables.
 
 ## Nommage des fichiers
 
+**Les fichiers maîtres portent le titre de l'enregistrement**, sans numéro :
+
 ```
-AUDIO-001_Jeanne-Dupont_original.wav     ← le maître, hors ligne, intouchable
-AUDIO-001_Jeanne-Dupont_ecoute.mp3       ← la version en ligne, dans audio/
+Grand-Père chante.wav          ← le maître, hors ligne, intouchable
 ```
 
-Le numéro `001` est le même que celui de l'adresse du site (`/01/`). C'est ce
-qui permet de retrouver le fichier maître à partir d'un QR code.
+**Les versions en ligne portent le même titre, simplifié** — une adresse web ne
+supporte ni accents, ni espaces, ni parenthèses :
+
+```
+audio/grand-pere-chante.mp3    ← la version d'écoute, appelée par la page /06/
+```
+
+Pas de numéro dans les noms de fichiers, ni d'un côté ni de l'autre : **c'est le
+titre qui fait le lien**, et il est unique. Comme les emplacements ont été
+numérotés dans l'ordre alphabétique des titres, le dossier `audio/` trié par nom
+se trouve être dans l'ordre du site — utile, mais ce n'est pas ce sur quoi on
+s'appuie.
+
+Chaque page indique le fichier qu'elle attend, en bas de sa fiche.
 
 **Une information incertaine se note comme incertaine** — « vers 1965 »,
 « probablement à Rennes », « date inconnue ». Une supposition familiale

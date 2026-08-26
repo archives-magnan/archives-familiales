@@ -1,39 +1,39 @@
 Les fichiers d'écoute (.mp3) se déposent ici, un par enregistrement.
 
-Convention de nommage :
-    AUDIO-001_Jeanne-Dupont_ecoute.mp3
+Le nom porte le numéro de l'emplacement puis le titre simplifié : une adresse
+web ne supporte ni accents, ni espaces, ni parenthèses.
 
-Le numéro correspond au dossier du site : AUDIO-001 → /01/
+Les fichiers maîtres, eux, gardent le titre complet et vivent hors ligne. La
+correspondance entre les deux se fait par le titre, qui est unique.
 
 À NE PAS METTRE ICI :
-  - les fichiers maîtres (.wav, .flac) : ils sont trop lourds et n'ont rien
-    à faire en ligne. Ils restent sur le Drive et sur les copies familiales.
+  - les fichiers maîtres (.wav, .flac) : trop lourds, et ils n'ont rien à faire
+    en ligne. Ils restent sur le Drive et sur les copies familiales.
   - un fichier de plus de 100 Mo : GitHub le refusera.
 
 Un fichier déposé ici reste dans l'historique du dépôt même après suppression.
-Mieux vaut donc préparer le mp3 correctement avant de le déposer, plutôt que
-de le remplacer cinq fois.
+Mieux vaut donc préparer le mp3 correctement avant de le déposer, plutôt que de
+le remplacer cinq fois.
 
+Les vingt fichiers attendus :
 
-Les vingt fichiers attendus, dans l'ordre des emplacements du site :
-
-  01  AUDIO-01_Annonce-des-fiancailles-a-Grand-Pere-et-Grand-Mere_ecoute.mp3
-  02  AUDIO-02_Arrivee-des-Americains-a-Brue_ecoute.mp3
-  03  AUDIO-03_Boulevard-Perier_ecoute.mp3
-  04  AUDIO-04_Choix-de-vie_ecoute.mp3
-  05  AUDIO-05_Fiancailles-Albert-Mady_ecoute.mp3
-  06  AUDIO-06_Grand-Pere-chante_ecoute.mp3
-  07  AUDIO-07_Installation-du-telephone-chez-les-Magnan_ecoute.mp3
-  08  AUDIO-08_Les-Allemandes-chez-Mady-et-Grand-Pere_ecoute.mp3
-  09  AUDIO-09_Les-Allemandes-chez-Mady-et-Grand-Pere-2_ecoute.mp3
-  10  AUDIO-10_Les-soeurs-de-Grand-Pere_ecoute.mp3
-  11  AUDIO-11_Liquidation-Magnan-Freres_ecoute.mp3
-  12  AUDIO-12_Magnan-Freres_ecoute.mp3
-  13  AUDIO-13_Mamie-raconte-la-guerre_ecoute.mp3
-  14  AUDIO-14_Mamie-raconte-la-guerre-2_ecoute.mp3
-  15  AUDIO-15_Parrain-Nico_ecoute.mp3
-  16  AUDIO-16_Paul-Roux_ecoute.mp3
-  17  AUDIO-17_Rencontre-avec-la-famille-Bourges_ecoute.mp3
-  18  AUDIO-18_Tante-Guiguitte_ecoute.mp3
-  19  AUDIO-19_Vive-Mady-et-Grand-Pere_ecoute.mp3
-  20  AUDIO-20_Voyage-entre-freres-et-soeurs-en-1950_ecoute.mp3
+  01  annonce-des-fiancailles-a-grand-pere-et-grand-mere.mp3  ← Annonce des fiançailles à Grand-Père et Grand-Mère
+  02  arrivee-des-americains-a-brue.mp3                     ← Arrivée des Américains à Brue
+  03  boulevard-perier.mp3                                  ← Boulevard Perier
+  04  choix-de-vie.mp3                                      ← Choix de vie
+  05  fiancailles-albert-mady.mp3                           ← Fiançailles Albert Mady
+  06  grand-pere-chante.mp3                                 ← Grand-Père chante
+  07  installation-du-telephone-chez-les-magnan.mp3         ← Installation du téléphone chez les Magnan
+  08  les-allemandes-chez-mady-et-grand-pere.mp3            ← Les Allemandes chez Mady et Grand-Père
+  09  les-allemandes-chez-mady-et-grand-pere-2.mp3          ← Les Allemandes chez Mady et Grand-Père (2)
+  10  les-soeurs-de-grand-pere.mp3                          ← Les sœurs de Grand-Père
+  11  liquidation-magnan-freres.mp3                         ← Liquidation Magnan Frères
+  12  magnan-freres.mp3                                     ← Magnan Frères
+  13  mamie-raconte-la-guerre.mp3                           ← Mamie raconte la guerre
+  14  mamie-raconte-la-guerre-2.mp3                         ← Mamie raconte la guerre (2)
+  15  parrain-nico.mp3                                      ← Parrain Nico
+  16  paul-roux.mp3                                         ← Paul Roux
+  17  rencontre-avec-la-famille-bourges.mp3                 ← Rencontre avec la famille Bourges
+  18  tante-guiguitte.mp3                                   ← Tante Guiguitte
+  19  vive-mady-et-grand-pere.mp3                           ← Vive Mady et Grand-Père
+  20  voyage-entre-freres-et-soeurs-en-1950.mp3             ← Voyage entre frères et sœurs en 1950
