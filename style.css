@@ -12,8 +12,11 @@
   --accent:    #7c4a24;
 }
 
+/* Le thème sombre s'applique dans deux cas : le système le demande et le
+   visiteur n'a pas choisi le contraire, ou le visiteur l'a choisi lui-même
+   avec le bouton. Les deux blocs portent exactement les mêmes valeurs. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg:       #141210;
     --surface:  #1d1a16;
     --ink:      #ebe5db;
@@ -23,11 +26,20 @@
   }
 }
 
+:root[data-theme="dark"] {
+  --bg:       #141210;
+  --surface:  #1d1a16;
+  --ink:      #ebe5db;
+  --ink-soft: #a29888;
+  --rule:     #322d26;
+  --accent:   #d8a874;
+}
+
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  padding: 3rem 1.25rem 5rem;
+  padding: 2rem 1.25rem 5rem;
   background: var(--bg);
   color: var(--ink);
   font: 1.0625rem/1.7 Georgia, "Iowan Old Style", "Times New Roman", serif;
@@ -35,6 +47,77 @@ body {
 }
 
 main { max-width: 34rem; margin: 0 auto; }
+
+/* ── Barre de navigation ──
+   Recopiée à l'identique dans chaque page : le site n'a pas de logiciel de
+   construction, et c'est voulu — on peut le modifier avec un simple éditeur
+   de texte, sans rien installer. Seuls les chemins changent selon la
+   profondeur de la page (« ../ » depuis un sous-dossier). */
+
+.barre {
+  max-width: 34rem;
+  margin: 0 auto 2.5rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.barre nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.barre a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: .9375rem;
+}
+
+.barre a:hover { color: var(--accent); }
+
+/* La page courante n'est pas un lien : on ne propose pas d'aller où l'on est
+   déjà. */
+.barre [aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.barre button {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  padding: .35rem .5rem;
+  line-height: 0;
+}
+
+.barre button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.barre button svg { width: 1.05rem; height: 1.05rem; }
+
+/* Le bouton montre l'icône de ce vers quoi il fait basculer : une lune quand
+   on est en clair, un soleil quand on est en sombre. */
+.icone-lune { display: block; }
+.icone-soleil { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .icone-lune { display: none; }
+  :root:not([data-theme="light"]) .icone-soleil { display: block; }
+}
+
+:root[data-theme="dark"] .icone-lune { display: none; }
+:root[data-theme="dark"] .icone-soleil { display: block; }
+
+:root[data-theme="light"] .icone-lune { display: block; }
+:root[data-theme="light"] .icone-soleil { display: none; }
 
 h1 {
   font-size: 1.75rem;

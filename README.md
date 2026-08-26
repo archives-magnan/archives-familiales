@@ -54,6 +54,7 @@ Dans le dépôt, cela correspond à :
 ```
 index.html        ← la page d'accueil, qui liste tout
 style.css         ← l'apparence, commune à toutes les pages
+theme.js          ← le bouton clair/sombre, le seul programme du site
 audio/            ← les fichiers .mp3
 arbre/index.html  ← l'arbre généalogique
 01/index.html     ← la page du premier enregistrement
@@ -91,6 +92,22 @@ Ce qui est marqué *à compléter* est ce qu'on ignorait au moment d'écrire la
 page. **Ne jamais deviner pour combler un trou** : un arbre faux se recopie de
 génération en génération sans que personne puisse plus le vérifier, alors
 qu'un trou, lui, appelle une question à quelqu'un qui sait encore.
+
+### Le menu du haut
+
+Le menu est recopié à l'identique dans chaque page, entre les balises
+`<header class="barre">`. Il n'y a pas de logiciel de construction derrière ce
+site, et c'est voulu : n'importe qui peut le modifier avec un éditeur de texte
+sans rien installer. En contrepartie, **ajouter une entrée au menu demande de
+la recopier dans chaque page**. Attention au chemin : depuis un sous-dossier
+comme `01/` ou `arbre/`, les liens commencent par `../`.
+
+### Le bouton clair / sombre
+
+C'est le seul programme du site (`theme.js`), et il ne fait que ça. Si le
+navigateur refuse de l'exécuter, les pages restent parfaitement lisibles :
+elles suivent alors le réglage clair/sombre du système, et le bouton ne
+s'affiche pas du tout. Aucune page ne dépend de lui pour être lue.
 
 ### Modifier le texte d'une page
 
