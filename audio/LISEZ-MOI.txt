@@ -13,3 +13,27 @@ Le numéro correspond au dossier du site : AUDIO-001 → /01/
 Un fichier déposé ici reste dans l'historique du dépôt même après suppression.
 Mieux vaut donc préparer le mp3 correctement avant de le déposer, plutôt que
 de le remplacer cinq fois.
+
+
+Les vingt fichiers attendus, dans l'ordre des emplacements du site :
+
+  01  AUDIO-01_Annonce-des-fiancailles-a-Grand-Pere-et-Grand-Mere_ecoute.mp3
+  02  AUDIO-02_Arrivee-des-Americains-a-Brue_ecoute.mp3
+  03  AUDIO-03_Boulevard-Perier_ecoute.mp3
+  04  AUDIO-04_Choix-de-vie_ecoute.mp3
+  05  AUDIO-05_Fiancailles-Albert-Mady_ecoute.mp3
+  06  AUDIO-06_Grand-Pere-chante_ecoute.mp3
+  07  AUDIO-07_Installation-du-telephone-chez-les-Magnan_ecoute.mp3
+  08  AUDIO-08_Les-Allemandes-chez-Mady-et-Grand-Pere_ecoute.mp3
+  09  AUDIO-09_Les-Allemandes-chez-Mady-et-Grand-Pere-2_ecoute.mp3
+  10  AUDIO-10_Les-soeurs-de-Grand-Pere_ecoute.mp3
+  11  AUDIO-11_Liquidation-Magnan-Freres_ecoute.mp3
+  12  AUDIO-12_Magnan-Freres_ecoute.mp3
+  13  AUDIO-13_Mamie-raconte-la-guerre_ecoute.mp3
+  14  AUDIO-14_Mamie-raconte-la-guerre-2_ecoute.mp3
+  15  AUDIO-15_Parrain-Nico_ecoute.mp3
+  16  AUDIO-16_Paul-Roux_ecoute.mp3
+  17  AUDIO-17_Rencontre-avec-la-famille-Bourges_ecoute.mp3
+  18  AUDIO-18_Tante-Guiguitte_ecoute.mp3
+  19  AUDIO-19_Vive-Mady-et-Grand-Pere_ecoute.mp3
+  20  AUDIO-20_Voyage-entre-freres-et-soeurs-en-1950_ecoute.mp3
