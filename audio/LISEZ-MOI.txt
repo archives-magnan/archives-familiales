@@ -1,0 +1,15 @@
+Les fichiers d'écoute (.mp3) se déposent ici, un par enregistrement.
+
+Convention de nommage :
+    AUDIO-001_Jeanne-Dupont_ecoute.mp3
+
+Le numéro correspond au dossier du site : AUDIO-001 → /01/
+
+À NE PAS METTRE ICI :
+  - les fichiers maîtres (.wav, .flac) : ils sont trop lourds et n'ont rien
+    à faire en ligne. Ils restent sur le Drive et sur les copies familiales.
+  - un fichier de plus de 100 Mo : GitHub le refusera.
+
+Un fichier déposé ici reste dans l'historique du dépôt même après suppression.
+Mieux vaut donc préparer le mp3 correctement avant de le déposer, plutôt que
+de le remplacer cinq fois.
