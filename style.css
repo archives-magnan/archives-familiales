@@ -1,160 +1,220 @@
-/* Archives sonores familiales — feuille de style unique, sans dépendance.
-   Aucune police externe, aucun script : la page doit s'afficher dans
-   n'importe quel navigateur, aujourd'hui comme dans trente ans. */
+/* Archives sonores familiales — feuille de style unique.
+
+   Deux règles qui ont dicté tout le reste :
+   1. aucune police, aucune bibliothèque, aucun fichier venu d'ailleurs. Ce
+      qui est chargé d'un autre serveur cesse un jour d'être chargé.
+   2. rien d'essentiel ne dépend d'une animation : tout ce qui bouge ici est
+      du confort, et s'arrête proprement si le lecteur préfère l'immobilité. */
 
 :root {
   color-scheme: light dark;
 
-  --bg:        #faf7f2;
-  --surface:   #fffdf9;
-  --voile:     #f4efe6;
-  --ink:       #221f1b;
-  --ink-soft:  #6d655b;
-  --rule:      #e4ddd2;
-  --accent:    #8a4b22;
+  /* Serif pour lire, sans-serif pour l'interface. Les deux sont déjà dans la
+     machine du lecteur, quelle qu'elle soit. */
+  --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
 
-  /* Une couleur par génération, comme sur l'arbre de travail de la famille.
-     La couleur n'est pas décorative : elle dit à quelle génération on est.
-     Teintes sourdes, pas des pastels — c'est une archive, pas un organigramme. */
-  --gen1: #7a5285;   /* Albert et Mady */
-  --gen2: #3d6398;   /* leurs enfants */
-  --gen3: #2f7a6c;   /* leurs petits-enfants */
-  --gen4: #b05c45;   /* leurs arrière-petits-enfants */
+  --bg:       #fbf9f5;
+  --surface:  #ffffff;
+  --voile:    #f3efe8;
+  --ink:      #1c1a17;
+  --ink-soft: #6b6358;
+  --rule:     #e6e0d6;
+  --accent:   #96502a;
 
-  /* Plein écran : le contenu occupe toute la largeur disponible, seules les
-     marges latérales le décollent des bords. */
+  --flou:   rgba(251, 249, 245, .78);
+  --ombre:  0 1px 2px rgba(28, 26, 23, .04), 0 6px 20px rgba(28, 26, 23, .05);
+  --ombre-levee: 0 2px 4px rgba(28, 26, 23, .05), 0 12px 32px rgba(28, 26, 23, .09);
+
+  /* Une couleur par génération. Elle n'est pas décorative : elle dit à quelle
+     génération on est, et ne sert que dans l'arbre. */
+  --gen1: #6f5080;
+  --gen2: #38618f;
+  --gen3: #2c7466;
+  --gen4: #a85742;
+
   --marge: 2.5rem;
+  --courbe: cubic-bezier(.2, .7, .3, 1);
 }
 
-/* Le thème sombre s'applique dans deux cas : le système le demande et le
-   visiteur n'a pas choisi le contraire, ou le visiteur l'a choisi lui-même
-   avec le bouton. Les deux blocs portent exactement les mêmes valeurs. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg:       #141210;
-    --surface:  #1e1b17;
-    --voile:    #1a1714;
-    --ink:      #ebe5db;
-    --ink-soft: #a29888;
-    --rule:     #332e27;
-    --accent:   #dda36b;
+    --bg:       #121110;
+    --surface:  #1b1917;
+    --voile:    #201d1a;
+    --ink:      #ede8df;
+    --ink-soft: #9e9587;
+    --rule:     #2e2a25;
+    --accent:   #d9a574;
 
-    --gen1: #b797c4;
-    --gen2: #8aaede;
-    --gen3: #6cc0ae;
-    --gen4: #e29f87;
+    --flou:   rgba(18, 17, 16, .72);
+    --ombre:  0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .28);
+    --ombre-levee: 0 2px 4px rgba(0, 0, 0, .34), 0 12px 32px rgba(0, 0, 0, .4);
+
+    --gen1: #bb9cc7;
+    --gen2: #8db1e0;
+    --gen3: #6cc2b0;
+    --gen4: #e5a48c;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg:       #141210;
-  --surface:  #1e1b17;
-  --voile:    #1a1714;
-  --ink:      #ebe5db;
-  --ink-soft: #a29888;
-  --rule:     #332e27;
-  --accent:   #dda36b;
+  --bg:       #121110;
+  --surface:  #1b1917;
+  --voile:    #201d1a;
+  --ink:      #ede8df;
+  --ink-soft: #9e9587;
+  --rule:     #2e2a25;
+  --accent:   #d9a574;
 
-  --gen1: #b797c4;
-  --gen2: #8aaede;
-  --gen3: #6cc0ae;
-  --gen4: #e29f87;
+  --flou:   rgba(18, 17, 16, .72);
+  --ombre:  0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .28);
+  --ombre-levee: 0 2px 4px rgba(0, 0, 0, .34), 0 12px 32px rgba(0, 0, 0, .4);
+
+  --gen1: #bb9cc7;
+  --gen2: #8db1e0;
+  --gen3: #6cc2b0;
+  --gen4: #e5a48c;
 }
 
 * { box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* la barre collante ne doit rien masquer */
+}
+
 body {
   margin: 0;
-  padding: 0 0 5rem;
+  padding: 0 0 6rem;
   background: var(--bg);
   color: var(--ink);
-  font: 1.0625rem/1.7 Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font: 1.09375rem/1.75 var(--serif);
+  -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
 
-main {
-  margin: 0 auto;
-  padding: 2.5rem var(--marge) 0;
+main { margin: 0 auto; padding: 3.5rem var(--marge) 0; }
+
+/* Une entrée en scène très courte, décalée d'un bloc à l'autre. Assez pour
+   que la page ait l'air de se poser, pas assez pour qu'on l'attende. */
+@keyframes monter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
 }
 
+main > * { animation: monter .5s var(--courbe) both; }
+main > *:nth-child(2) { animation-delay: .05s; }
+main > *:nth-child(3) { animation-delay: .1s; }
+main > *:nth-child(n+4) { animation-delay: .15s; }
+
 h1 {
-  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
-  line-height: 1.2;
-  margin: 0 0 .35rem;
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.25rem);
+  line-height: 1.08;
+  margin: 0 0 .5rem;
   font-weight: 600;
-  letter-spacing: -.01em;
+  letter-spacing: -.022em;
+  text-wrap: balance;
 }
 
 .lede {
   color: var(--ink-soft);
-  margin: 0 0 2.5rem;
-  font-size: 1.125rem;
+  margin: 0 0 3rem;
+  font-size: 1.1875rem;
+  max-width: 46ch;
+  text-wrap: pretty;
 }
 
 h2 {
-  font-size: .8125rem;
-  letter-spacing: .09em;
+  font: 600 .75rem/1.4 var(--sans);
+  letter-spacing: .11em;
   text-transform: uppercase;
-  color: var(--accent);
-  font-weight: 700;
-  margin: 0 0 1rem;
-  padding-top: 2rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+  padding-top: 3rem;
   border-top: 1px solid var(--rule);
 }
 
 /* ── Barre de navigation ──
    Recopiée à l'identique dans chaque page : le site n'a pas de logiciel de
    construction, et c'est voulu — on peut le modifier avec un simple éditeur
-   de texte, sans rien installer. Seuls les chemins changent selon la
-   profondeur de la page (« ../ » depuis un sous-dossier). */
+   de texte. Seuls les chemins changent selon la profondeur de la page. */
 
 .barre {
-  background: var(--surface);
-  border-bottom: 1px solid var(--rule);
   position: sticky;
   top: 0;
   z-index: 10;
+  background: var(--flou);
+  border-bottom: 1px solid var(--rule);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .barre {
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    backdrop-filter: saturate(180%) blur(14px);
+  }
 }
 
 .barre > div {
-  padding: .85rem var(--marge);
+  padding: .9rem var(--marge);
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
-.barre nav { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.barre nav { display: flex; gap: 1.75rem; flex-wrap: wrap; }
 
 .barre a {
+  position: relative;
+  font: 500 .875rem/1 var(--sans);
   color: var(--ink-soft);
   text-decoration: none;
-  font-size: .9375rem;
+  padding: .3rem 0;
+  transition: color .18s var(--courbe);
 }
 
-.barre a:hover { color: var(--accent); }
+.barre a::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -.15rem;
+  height: 1.5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s var(--courbe);
+}
+
+.barre a:hover { color: var(--ink); }
+.barre a:hover::after { transform: scaleX(1); }
 
 /* La page courante n'est pas un lien : on ne propose pas d'aller où l'on est
    déjà. */
-.barre [aria-current="page"] {
-  color: var(--ink);
-  font-weight: 600;
-  box-shadow: 0 2px 0 var(--accent);
-}
+.barre [aria-current="page"] { color: var(--ink); font-weight: 600; }
+.barre [aria-current="page"]::after { transform: scaleX(1); }
 
 .barre button {
   margin-left: auto;
+  display: grid;
+  place-items: center;
+  width: 2.1rem; height: 2.1rem;
   background: none;
   border: 1px solid var(--rule);
   border-radius: 999px;
   color: var(--ink-soft);
   cursor: pointer;
-  padding: .4rem .55rem;
-  line-height: 0;
+  padding: 0;
+  transition: color .18s var(--courbe), border-color .18s var(--courbe),
+              transform .18s var(--courbe);
 }
 
-.barre button:hover { color: var(--accent); border-color: var(--accent); }
+.barre button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: rotate(-18deg);
+}
 
-.barre button svg { width: 1.05rem; height: 1.05rem; }
+.barre button svg { width: 1rem; height: 1rem; }
 
 /* Le bouton montre l'icône de ce vers quoi il fait basculer : une lune quand
    on est en clair, un soleil quand on est en sombre. */
@@ -174,25 +234,29 @@ h2 {
 /* ── Texte de présentation (page d'accueil) ── */
 
 .presentation {
-  margin: 1.75rem 0 1rem;
-  padding-left: 1.25rem;
-  border-left: 3px solid var(--gen1);
+  margin: 0 0 1rem;
+  max-width: 62ch;
+  font-size: 1.15rem;
 }
 
-.presentation p { margin: 0 0 1.25rem; }
+.presentation p { margin: 0 0 1.4rem; text-wrap: pretty; }
 
-/* Signature du texte de présentation. Sans elle, le « je » du texte
-   devient une énigme pour un lecteur qui n'a pas connu la famille. */
+/* Signature du texte de présentation. Sans elle, le « je » du texte devient
+   une énigme pour un lecteur qui n'a pas connu la famille. */
 .presentation .signature {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
   text-align: right;
   font-style: italic;
   line-height: 1.5;
 }
 
 .presentation .signature span {
-  font-size: .9375rem;
+  font: .875rem/1.5 var(--sans);
+  font-style: normal;
   color: var(--ink-soft);
+  letter-spacing: .01em;
 }
 
 /* ── Liste des enregistrements ── */
@@ -202,64 +266,87 @@ h2 {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: .85rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr));
 }
 
 .pistes a {
   display: block;
   height: 100%;
-  padding: 1.1rem 1.2rem;
+  padding: 1.35rem 1.45rem;
   background: var(--surface);
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--gen2);
-  border-radius: 6px;
+  border-radius: 12px;
   color: inherit;
   text-decoration: none;
+  box-shadow: var(--ombre);
+  transition: transform .25s var(--courbe), box-shadow .25s var(--courbe),
+              border-color .25s var(--courbe);
 }
 
 .pistes a:hover,
 .pistes a:focus-visible {
-  border-color: var(--accent);
-  border-left-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: var(--ombre-levee);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--rule));
 }
 
-.pistes .titre { display: block; font-weight: 600; }
+.pistes .titre {
+  display: block;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  margin-bottom: .35rem;
+}
 
 .pistes .meta {
   display: block;
-  font-size: .875rem;
+  font: .8125rem/1.5 var(--sans);
   color: var(--ink-soft);
 }
 
 /* ── Page d'un enregistrement ── */
 
-.dates { color: var(--ink-soft); font-style: italic; margin: 0 0 2rem; }
+.dates {
+  color: var(--ink-soft);
+  font-style: italic;
+  margin: 0 0 2.5rem;
+  font-size: 1.0625rem;
+}
 
-audio { width: 100%; margin: 0 0 2.5rem; }
+/* Le lecteur ne s'étire pas sur toute la largeur d'un grand écran : un
+   contrôle de trois minutes n'a pas besoin d'un mètre de piste. */
+audio {
+  width: 100%;
+  max-width: 34rem;
+  margin: 0 0 3rem;
+  border-radius: 999px;
+}
 
-dl { margin: 0 0 1.5rem; }
+dl { margin: 0 0 1.5rem; max-width: 46ch; }
 
-dt { font-size: .8125rem; color: var(--ink-soft); margin-top: .85rem; }
+dt {
+  font: .75rem/1.4 var(--sans);
+  letter-spacing: .05em;
+  color: var(--ink-soft);
+  margin-top: 1.1rem;
+}
 
-dd { margin: 0; }
+dd { margin: .1rem 0 0; }
 
-/* Une information incertaine reste signalée comme telle : on ne
-   transforme jamais une supposition familiale en certitude. */
+/* Une information incertaine reste signalée comme telle : on ne transforme
+   jamais une supposition familiale en certitude. */
 .incertain { color: var(--ink-soft); }
 .incertain::after {
   content: " (à confirmer)";
-  font-size: .8125rem;
-  font-style: italic;
+  font: italic .8125rem var(--sans);
 }
-
-/* ── Transcription ── */
 
 .transcription {
   background: var(--voile);
-  border-radius: 6px;
-  padding: 1.25rem 1.4rem;
+  border-radius: 12px;
+  padding: 1.6rem 1.8rem;
   margin: 0 0 2rem;
+  max-width: 62ch;
 }
 
 .transcription p { margin: 0 0 1rem; }
@@ -267,57 +354,28 @@ dd { margin: 0; }
 
 /* ── Arbre généalogique ── */
 
-.arbre { margin: 0 0 1.75rem; }
-
-.arbre ul {
-  list-style: none;
-  margin: 0;
-  padding: 0 0 0 1.1rem;
-  border-left: 1px solid var(--rule);
-}
-
-.arbre ul.racine { padding-left: 0; border-left: 0; }
-
-.arbre li { margin: .5rem 0; }
-
-/* Les <details> natifs portent toute l'interactivité : ni script, ni
-   bibliothèque, donc rien qui puisse cesser de fonctionner un jour. */
-.arbre summary { cursor: pointer; padding: .3rem .4rem .3rem 0; }
-.arbre summary:hover { color: var(--accent); }
-.arbre summary::marker { color: var(--ink-soft); }
-
-.arbre .personne { display: inline-block; padding: .3rem 0; }
-
-.arbre b { font-weight: 600; }
-.arbre i { font-style: italic; color: var(--ink-soft); }
-.arbre .lien { color: var(--ink-soft); padding: 0 .15rem; }
-
-.arbre .vie,
-.arbre .role { font-size: .875rem; color: var(--ink-soft); }
-
-.arbre .role::before { content: " — "; }
-
-/* ── Bascule entre les deux vues ── */
-
 .vues {
   display: inline-flex;
   border: 1px solid var(--rule);
   border-radius: 999px;
-  padding: 2px;
-  margin: 0 0 1.5rem;
+  padding: 3px;
+  margin: 0 0 2rem;
   background: var(--surface);
+  box-shadow: var(--ombre);
 }
 
 .vues button {
-  font: inherit;
-  font-size: .875rem;
+  font: 500 .8125rem/1 var(--sans);
   border: 0;
   background: none;
   color: var(--ink-soft);
-  padding: .35rem 1rem;
+  padding: .5rem 1.1rem;
   border-radius: 999px;
   cursor: pointer;
+  transition: background .22s var(--courbe), color .22s var(--courbe);
 }
+
+.vues button:hover { color: var(--ink); }
 
 .vues button[aria-pressed="true"] {
   background: var(--voile);
@@ -325,41 +383,124 @@ dd { margin: 0; }
   font-weight: 600;
 }
 
+.legende {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  font: .8125rem/1.5 var(--sans);
+  color: var(--ink-soft);
+}
+
+.legende span::before {
+  content: "";
+  display: inline-block;
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  margin-right: .5rem;
+  vertical-align: .05em;
+}
+
+.legende .l1::before { background: var(--gen1); }
+.legende .l2::before { background: var(--gen2); }
+.legende .l3::before { background: var(--gen3); }
+.legende .l4::before { background: var(--gen4); }
+
+.arbre { margin: 0 0 2rem; }
+
+.arbre ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.25rem;
+  border-left: 1px solid var(--rule);
+}
+
+.arbre ul.racine { padding-left: 0; border-left: 0; }
+
+.arbre li { margin: .35rem 0; }
+
+/* Les <details> natifs portent toute l'interactivité de la vue liste : ni
+   script, ni bibliothèque, donc rien qui puisse cesser de fonctionner. */
+.arbre summary {
+  list-style: none;
+  cursor: pointer;
+  position: relative;
+  padding: .35rem .4rem .35rem 1.5rem;
+  border-radius: 6px;
+  transition: background .18s var(--courbe);
+}
+
+.arbre summary::-webkit-details-marker { display: none; }
+.arbre summary:hover { background: var(--voile); }
+
+/* Un chevron qui pivote : c'est le seul endroit du site où le mouvement dit
+   quelque chose — ouvert ou fermé. */
+.arbre summary::before {
+  content: "";
+  position: absolute;
+  left: .35rem;
+  top: 1.1em;
+  width: .4rem; height: .4rem;
+  border-right: 1.5px solid var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  transform: translateY(-50%) rotate(-45deg);
+  transition: transform .22s var(--courbe);
+}
+
+.arbre details[open] > summary::before {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.arbre .personne { display: inline-block; padding: .35rem 0; }
+
+.arbre b { font-weight: 600; }
+.arbre i { font-style: italic; color: var(--ink-soft); }
+.arbre .lien { color: var(--ink-soft); padding: 0 .1rem; }
+
+.arbre .numero {
+  font: .8125rem/1 var(--sans);
+  color: var(--ink-soft);
+  margin-right: .15rem;
+}
+
+.arbre .vie,
+.arbre .role { font: .8125rem/1.5 var(--sans); color: var(--ink-soft); }
+.arbre .role::before { content: "— "; }
+
+/* La couleur dit la génération, et ne sert qu'ici. */
+.g1 > * > b, .g1 > b, .g1 > details > summary b { color: var(--gen1); }
+.g2 > * > b, .g2 > b, .g2 > details > summary b { color: var(--gen2); }
+.g3 > * > b, .g3 > b, .g3 > details > summary b { color: var(--gen3); }
+.g4 > * > b, .g4 > b, .g4 > details > summary b { color: var(--gen4); }
+
 /* ── Vue « arborescence » ──
    Le même balisage que la vue liste, redessiné : chaque personne devient un
    cadre, et des traits relient les cadres à leur parent. L'arbre se déploie
    vers le bas, jamais vers la droite : il doit rester lisible sur un
    téléphone, puisqu'on y arrive par un QR code. */
 
-.arborescence ul { border-left: 0; padding-left: 1.75rem; }
+.arborescence ul { border-left: 0; padding-left: 2rem; }
 .arborescence ul.racine { padding-left: 0; }
 
-.arborescence li {
-  position: relative;
-  margin: 0;
-  padding: .3rem 0;
-}
+.arborescence li { position: relative; margin: 0; padding: .35rem 0; }
 
-/* Le trait vertical qui descend le long d'une fratrie. Il s'arrête au
-   dernier enfant, sinon il pendrait dans le vide. */
 .arborescence ul:not(.racine) > li::before {
   content: "";
   position: absolute;
-  left: -1rem;
-  top: 0;
+  left: -1.1rem; top: 0;
   height: 100%;
   border-left: 1px solid var(--rule);
 }
 
-.arborescence ul:not(.racine) > li:last-child::before { height: 1.35rem; }
+.arborescence ul:not(.racine) > li:last-child::before { height: 1.6rem; }
 
-/* Le trait horizontal qui rejoint le cadre. */
 .arborescence ul:not(.racine) > li::after {
   content: "";
   position: absolute;
-  left: -1rem;
-  top: 1.35rem;
-  width: 1rem;
+  left: -1.1rem; top: 1.6rem;
+  width: 1.1rem;
   border-top: 1px solid var(--rule);
 }
 
@@ -368,58 +509,30 @@ dd { margin: 0; }
   display: inline-block;
   background: var(--surface);
   border: 1px solid var(--rule);
-  border-left-width: 3px;
-  border-radius: 5px;
-  padding: .45rem .8rem;
-  margin: .15rem 0;
+  border-left: 3px solid var(--rule);
+  border-radius: 10px;
+  padding: .55rem .9rem;
+  margin: .1rem 0;
+  box-shadow: var(--ombre);
+  transition: transform .22s var(--courbe), box-shadow .22s var(--courbe);
 }
 
-.arborescence summary { list-style: none; }
-.arborescence summary::marker,
-.arborescence summary::-webkit-details-marker { display: none; content: ""; }
+.arborescence summary { cursor: default; padding-left: .9rem; }
+.arborescence summary::before { display: none; }
+
+.arborescence summary:hover,
+.arborescence .personne:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--ombre-levee);
+}
 
 .arborescence .g1 > summary, .arborescence .g1 > .personne { border-left-color: var(--gen1); }
 .arborescence .g2 > summary, .arborescence .g2 > .personne { border-left-color: var(--gen2); }
 .arborescence .g3 > summary, .arborescence .g3 > .personne { border-left-color: var(--gen3); }
 .arborescence .g4 > summary, .arborescence .g4 > .personne { border-left-color: var(--gen4); }
 
-/* En arborescence, on ne replie plus rien : le curseur ne doit pas le
-   laisser croire. */
-.arborescence summary { cursor: default; }
-
-/* La couleur dit la génération. */
-.g1 b { color: var(--gen1); }
-.g2 b { color: var(--gen2); }
-.g3 b { color: var(--gen3); }
-.g4 b { color: var(--gen4); }
-
-.legende {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-  margin: 0 0 2rem;
-  padding: 0;
-  font-size: .875rem;
-  color: var(--ink-soft);
-}
-
-.legende span::before {
-  content: "";
-  display: inline-block;
-  width: .6rem;
-  height: .6rem;
-  border-radius: 2px;
-  margin-right: .4rem;
-}
-
-.legende .l1::before { background: var(--gen1); }
-.legende .l2::before { background: var(--gen2); }
-.legende .l3::before { background: var(--gen3); }
-.legende .l4::before { background: var(--gen4); }
-
-/* Un trou dans l'arbre se voit. C'est voulu : il appelle à être comblé,
-   au lieu de laisser croire que la branche s'arrête là. */
+/* Un trou dans l'arbre se voit. C'est voulu : il appelle à être comblé, au
+   lieu de laisser croire que la branche s'arrête là. */
 .a-completer {
   font-style: italic;
   color: var(--ink-soft);
@@ -431,50 +544,85 @@ dd { margin: 0; }
 
 /* ── Divers ── */
 
-.note { font-size: .9375rem; color: var(--ink-soft); margin: 0 0 2rem; }
+.note {
+  font: .9375rem/1.7 var(--sans);
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
 
 a { color: var(--accent); }
 
-.retour { display: inline-block; margin-top: 2.5rem; font-size: .9375rem; }
+.retour {
+  display: inline-block;
+  margin-top: 3rem;
+  font: 500 .9375rem var(--sans);
+  text-decoration: none;
+  transition: transform .22s var(--courbe);
+}
+
+.retour:hover { transform: translateX(-3px); }
 
 .pied {
-  margin: 4rem 0 0;
-  padding: 1.5rem var(--marge);
+  margin: 5rem 0 0;
+  padding: 1.75rem var(--marge);
   border-top: 1px solid var(--rule);
-  font-size: .875rem;
+  font: .875rem/1.7 var(--sans);
   color: var(--ink-soft);
 }
 
 .pied p { margin: 0; }
 
-/* ── Impression ──
-   Le livre de famille est imprimé ; quelqu'un voudra imprimer l'arbre. On
-   déplie alors tout ce qui est repliable, et on retire ce qui ne sert qu'à
-   l'écran. */
-@media (max-width: 40rem) {
-  :root { --marge: 1.25rem; }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
+@media (max-width: 40rem) {
+  :root { --marge: 1.35rem; }
+  main { padding-top: 2.5rem; }
+}
+
+/* ── Immobilité choisie ──
+   Un lecteur peut demander à son système de ne pas animer les interfaces.
+   On le respecte : tout s'affiche d'emblée, rien ne se déplace. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .barre button:hover,
+  .pistes a:hover,
+  .retour:hover,
+  .arborescence summary:hover,
+  .arborescence .personne:hover { transform: none; }
+}
+
+/* ── Impression ──
+   Le livre de famille est imprimé ; quelqu'un voudra imprimer l'arbre.
+   theme.js déplie les branches avant l'impression et restaure ensuite l'état
+   laissé par le lecteur. */
 @media print {
-  .barre, .retour, audio { display: none !important; }
+  .barre, .retour, .vues, audio { display: none !important; }
 
   body { background: #fff; color: #000; padding: 0; }
-
   main { padding: 0; }
+  main > * { animation: none; }
 
-  /* Déplier tout l'arbre. Deux écritures : l'ancienne, que les navigateurs
-     appliquent depuis toujours, et ::details-content pour les versions
-     récentes de Chrome, qui masquent autrement. */
+  .arbre li { break-inside: avoid; }
+  .arborescence summary,
+  .arborescence .personne { box-shadow: none; }
+
   details:not([open]) > *:not(summary) { display: block !important; }
   details::details-content {
     content-visibility: visible !important;
     display: block !important;
   }
 
-  .vues { display: none !important; }
-  .arbre li { break-inside: avoid; }
-
   a { color: #000; text-decoration: none; }
-
   .pied { border-top: 1px solid #ccc; color: #444; }
 }
