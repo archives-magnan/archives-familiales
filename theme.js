@@ -6,6 +6,9 @@
  * suivent alors le réglage clair/sombre du système, et le bouton — qui n'est
  * affiché que par ce fichier — ne s'affiche simplement pas.
  *
+ * Le site s'ouvre toujours dans le mode du système. Le bouton ne fait que
+ * dévier de ce réglage le temps d'une visite (décision du 27/08/2026).
+ *
  * Ce fichier est chargé dans le <head> sans « defer », volontairement : il
  * doit poser le thème AVANT que la page ne s'affiche, sans quoi on verrait un
  * éclair blanc au chargement d'une page sombre.
@@ -13,14 +16,31 @@
 (function () {
   var root = document.documentElement;
 
-  // 1. Rétablir le choix précédent, s'il y en a un. Un navigateur en
-  //    navigation privée peut refuser l'accès au stockage : on n'insiste pas.
+  // 1. À l'ouverture du site, on suit le réglage clair/sombre du système.
+  //    Toujours. Un choix fait au bouton ne vaut que pour la visite en cours :
+  //    il est gardé en sessionStorage, que le navigateur vide en fermant
+  //    l'onglet. C'est ce qui permet au bouton de survivre à un clic sur un
+  //    lien — le site a une page par enregistrement, on navigue beaucoup —
+  //    sans figer le thème pour les visites suivantes.
+  //
+  //    Un navigateur en navigation privée peut refuser l'accès au stockage :
+  //    on n'insiste pas, la page suit alors le système, ce qui est le
+  //    comportement voulu de toute façon.
   try {
-    var enregistre = localStorage.getItem('theme');
+    var enregistre = sessionStorage.getItem('theme');
     if (enregistre === 'dark' || enregistre === 'light') {
       root.setAttribute('data-theme', enregistre);
     }
+    // Ancienne clé, du temps où le choix était gardé d'une visite à l'autre.
+    // On la retire pour ne pas laisser un visiteur d'alors coincé dans un
+    // thème qu'il avait choisi une fois. À supprimer après 2027.
+    localStorage.removeItem('theme');
   } catch (e) {}
+
+  // Tant que personne n'a touché au bouton pendant cette visite, un changement
+  // de réglage du système (le basculement automatique au coucher du soleil,
+  // par exemple) se répercute tout seul : sans attribut data-theme, c'est la
+  // feuille de style qui suit prefers-color-scheme. Rien à programmer.
 
   // 2. Brancher le bouton une fois la page construite.
   document.addEventListener('DOMContentLoaded', function () {
@@ -45,7 +65,7 @@
       var suivant = actuel === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', suivant);
 
-      try { localStorage.setItem('theme', suivant); } catch (e) {}
+      try { sessionStorage.setItem('theme', suivant); } catch (e) {}
     });
   });
 
