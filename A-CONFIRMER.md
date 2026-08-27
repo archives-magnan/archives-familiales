@@ -24,29 +24,6 @@ invisible pour qui lit le site, visible pour qui le modifie.
 
 ## En attente
 
-### Noms de famille donnés de mémoire
-
-Donnés par Samuel le 27 août 2026, de tête, sans document sous les yeux. Il a
-lui-même annoncé qu'il les reconfirmerait. Ils sont affichés dans
-[l'arbre](arbre/).
-
-| Personne | Valeur affichée | À vérifier auprès de |
-| :-- | :-- | :-- |
-| Jeanne, épouse de Maurice Magnan | **Granier** | la famille |
-| Suzanne, épouse de Henri Bourges *(Mamie Suzanne)* | **Pernot** | la famille |
-| Danièle, épouse de Rémy Magnan | **Saint Didier** | la famille |
-| Candice, épouse de Paul Chauvetet | **Gruffat** | la famille — Samuel avait noté « ??? » à côté |
-| Fille de Cécile Chauvetet et Martin de La Taille | **Soline** | la famille — c'est le prénom lui-même qui est incertain |
-
-### Dates d'Albert Magnan
-
-**26 octobre 1924 – 19 janvier 2022**, données de mémoire le 27 août 2026, dans
-le même lot que les noms ci-dessus. Elles n'ont pas encore été rapprochées d'un
-acte d'état civil.
-
-*(Les dates de Mady — 3 février 1932 – 29 mai 2020 — ont été confirmées par
-Samuel le 27 août 2026. Elles ne sont plus en attente.)*
-
 ### D'où viennent les chansons ?
 
 Anne écrit, dans le texte de présentation : « J'ai aussi ajouté les bandes sons
@@ -97,7 +74,20 @@ Ce qui n'est pas connu et n'est écrit nulle part.
 
 Gardé ici pour qu'on ne rouvre pas ces questions.
 
-- **Date de décès de Mady** — 29 mai 2020, confirmé le 27 août 2026.
+- **Dates de Mady** — 3 février 1932 – 29 mai 2020, confirmées le 27 août 2026.
+- **Dates d'Albert Magnan** — 26 octobre 1924 – 19 janvier 2022, confirmées par
+  Samuel le 27 août 2026.
+- **Le lot de noms de famille donné de mémoire le 27 août 2026** — Jeanne
+  **Granier**, Suzanne **Pernot**, Danièle **Saint Didier**, Candice
+  **Gruffat** (le « ??? » que Samuel avait noté à côté est levé), et le prénom
+  **Soline**. Tous confirmés par Samuel le 27 août 2026, en deux fois dans la
+  même journée. Ils sont désormais affichés sans réserve dans l'arbre, et les
+  commentaires « à confirmer » du code ont été retirés.
+
+  ⚠️ Confirmés **de mémoire, par une seule personne**. Aucun n'a été rapproché
+  d'un acte d'état civil. Si un document apparaît un jour et contredit l'un
+  d'eux, c'est le document qui a raison — corriger la page et noter ici ce qui
+  a changé.
 - **Orthographe de la particule** — « de La Taille », usage français quand la
   particule est suivie d'un article : le « de » reste en minuscule après un
   prénom, l'article garde sa majuscule (« Jean de La Fontaine »). Arbitré
