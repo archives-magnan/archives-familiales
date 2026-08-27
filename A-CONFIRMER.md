@@ -40,19 +40,12 @@ bien plus ancien.
 **Question posée à Anne par Samuel le 27 août 2026.** En attendant sa réponse,
 aucune date n'est portée sur la fiche du 06 : la déduire serait inventer.
 
-### « Parrain Nico » est daté du 2 avril 2016
+### Qui a enregistré « Parrain Nico », et sur quoi ?
 
-Date donnée par Samuel le 28 août 2026 — jour puis mois, donc le 2 avril. Elle
-est portée sur la fiche du 15, seule ligne remplie de cette page.
-
-Elle apprend surtout ceci : l'enregistrement **ne vient pas des séances qu'Anne
-a faites de son père**, qui se situent entre le 29 mai 2020 et le 19 janvier
-2022. Le 15 a une autre origine — bande plus ancienne, ou séance faite par
-quelqu'un d'autre. D'où vient cette date, et qui tenait le micro, reste à
-préciser.
-
-Elle ne dit pas non plus **qui parle**, ni **de quel Nicolas il s'agit** : le
-titre nomme un parrain, sans dire de qui.
+Le 15 est daté du 2 avril 2016, donc **hors des séances qu'Anne a faites de son
+père** (29 mai 2020 – 19 janvier 2022). Il vient d'ailleurs, et on ne sait pas
+encore de qui : qui tenait le micro ce jour-là, et sur quel support. Un
+téléphone, très probablement, vu la date — mais ce n'est pas établi.
 
 ### Fiches des vingt enregistrements
 
@@ -66,10 +59,11 @@ en ligne — un champ vide se lit comme un chantier abandonné. Le bloc à recop
 quand l'information arrive est en commentaire dans le code de chaque page,
 avec le nom du fichier audio attendu.
 
-Trois pages portent déjà ce que le texte d'Anne établit lui-même : `06`
-(Albert Magnan), `13` et `14` (Suzanne Bourges, enregistrée par son fils
-Joseph). Les dix-sept autres ne sont pas encore identifiées — c'est ce que
-signale l'étiquette « à identifier » sur la page d'accueil.
+Quatre pages sont renseignées : `06` (Albert Magnan), `13` et `14` (Suzanne
+Bourges, enregistrée par son fils Joseph) d'après le texte d'Anne, et `15`
+(Priscille Rizoulières, 2 avril 2016) d'après Samuel. Les seize autres ne sont
+pas encore identifiées — c'est ce que signale l'étiquette « à identifier » sur
+la page d'accueil.
 
 ---
 
@@ -87,6 +81,13 @@ Ce qui n'est pas connu et n'est écrit nulle part.
 ## Réglé
 
 Gardé ici pour qu'on ne rouvre pas ces questions.
+
+- **« Parrain Nico », c'est Nicolas Magnan** — le petit-fils d'Albert qui
+  figure dans l'arbre, marié à Laura Hézard, et non un Magnan de la génération
+  au-dessus comme on avait pu le supposer. Confirmé par Samuel le 28 août 2026,
+  avec ce que raconte l'enregistrement : sa filleule **Priscille Rizoulières**
+  lui chante une chanson sur l'air de *Tata Yoyo*, le 2 avril 2016. La fiche du
+  15 et l'étiquette de la page d'accueil en découlent.
 
 - **Dates de Mady** — 3 février 1932 – 29 mai 2020, confirmées le 27 août 2026.
 - **Dates d'Albert Magnan** — 26 octobre 1924 – 19 janvier 2022, confirmées par
