@@ -484,13 +484,11 @@ dt {
 
 dd { margin: .1rem 0 0; }
 
-/* Une information incertaine reste signalée comme telle : on ne transforme
-   jamais une supposition familiale en certitude. */
-.incertain { color: var(--ink-soft); }
-.incertain::after {
-  content: " (à confirmer)";
-  font: italic .8125rem var(--sans);
-}
+/* La classe .incertain affichait « (à confirmer) » à côté d'une valeur donnée
+   de mémoire. Retirée de l'affichage le 27/08/2026 : le site se lit comme une
+   page achevée. Ce qui reste à vérifier est suivi dans A-CONFIRMER.md, à la
+   racine du dépôt, et signalé par un commentaire dans le HTML de l'arbre.
+   Pour la rétablir, la reprendre dans l'historique du dépôt. */
 
 .transcription {
   background: var(--voile);

@@ -284,6 +284,17 @@ Chaque page indique le fichier qu'elle attend, en bas de sa fiche.
 transformée en certitude devient un faux souvenir pour les générations
 suivantes.
 
+Cette réserve ne s'écrit pas sur la page elle-même : un texte criblé de
+« (à confirmer) » se lit comme un brouillon et décourage la lecture. Elle
+s'écrit dans [`A-CONFIRMER.md`](A-CONFIRMER.md), à la racine du dépôt, où
+figure la liste de tout ce qui n'est pas encore vérifié — avec, pour chaque
+point, qui peut y répondre. Dans le code des pages, chaque valeur concernée
+porte en plus un commentaire `<!-- à confirmer -->` juste à côté d'elle,
+invisible pour qui lit le site.
+
+**Avant de recopier une information de ce site ailleurs — un faire-part, un
+livre, un autre arbre — ouvrir ce fichier.**
+
 ---
 
 ## Qui contacter
