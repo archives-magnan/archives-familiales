@@ -65,14 +65,20 @@ aucune date n'est portée sur la fiche du 06 : la déduire serait inventer.
 
 ### Fiches des vingt enregistrements
 
-Qui parle, la date, le lieu, la durée, le support d'origine : ces champs sont
-vides sur les vingt pages. Ils seront remplis par la personne qui a réalisé et
-rassemblé les enregistrements, après écoute.
+Qui parle, la date, le lieu, la durée, le support d'origine : ces champs seront
+remplis par la personne qui a réalisé et rassemblé les enregistrements, après
+écoute.
 
-Dix-sept des vingt enregistrements ne sont pas encore identifiés — c'est ce que
-signale l'étiquette « à identifier » sur la page d'accueil. Trois le sont :
-`06` (Albert Magnan), `13` et `14` (Suzanne Bourges, enregistrée par son fils
-Joseph).
+**Ils ne s'affichent pas tant qu'ils sont vides.** Les vingt pages ne montrent
+donc que leur titre et une phrase disant que l'enregistrement n'est pas encore
+en ligne — un champ vide se lit comme un chantier abandonné. Le bloc à recopier
+quand l'information arrive est en commentaire dans le code de chaque page,
+avec le nom du fichier audio attendu.
+
+Trois pages portent déjà ce que le texte d'Anne établit lui-même : `06`
+(Albert Magnan), `13` et `14` (Suzanne Bourges, enregistrée par son fils
+Joseph). Les dix-sept autres ne sont pas encore identifiées — c'est ce que
+signale l'étiquette « à identifier » sur la page d'accueil.
 
 ---
 
