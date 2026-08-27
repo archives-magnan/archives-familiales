@@ -167,6 +167,36 @@ cadre blanc autour du code, qui fait partie du code.
 **Vérifier chaque code après l'avoir généré**, en le scannant. Un QR faux est
 indétectable à l'œil.
 
+### Étiqueter un enregistrement
+
+La page d'accueil trie les enregistrements par étiquette. Le tri se fait
+entièrement en CSS, sans aucun programme : ce sont des boutons radio cachés, et
+la liste reste entière si quoi que ce soit cesse de fonctionner.
+
+Trois dimensions, et **volontairement pas une de plus** — un vocabulaire qui
+enfle cesse d'être un filtre :
+
+| Dimension | Valeurs | Combien |
+| :--- | :--- | :--- |
+| **Nature** | `recit`, `chanson` | exactement une |
+| **Voix** | `voix-albert`, `voix-suzanne`… | qui on entend |
+| **Thème** | `guerre`, `magnan-freres`… | de quoi ça parle |
+
+Dans `index.html`, chaque enregistrement porte ses étiquettes sur son `<li>` :
+
+```html
+<li data-tags="recit voix-suzanne guerre">
+```
+
+Un enregistrement qu'on n'a pas encore identifié porte `data-tags="a-identifier"`
+et rien d'autre : il apparaît alors sous le filtre du même nom, qui sert de
+liste de choses à faire. **Ne pas étiqueter au jugé** — une étiquette posée à
+tort ne se rediscute jamais.
+
+Pour qu'un nouveau filtre apparaisse, il faut trois choses : un `<input>`, un
+`<label>`, et une ligne dans la règle de tri de `style.css`. Tout est
+au même endroit dans chaque fichier.
+
 ### Modifier le texte d'une page
 
 Sur github.com, ouvrir le fichier, cliquer sur l'icône en forme de crayon,

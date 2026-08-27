@@ -70,122 +70,143 @@
 
   <h2>Les enregistrements</h2>
 
+  <!-- Les boutons radio sont ici, hors du bloc visible, parce que le tri se
+       fait en CSS : une règle « #f-recit:checked ~ .pistes li:not(…) » exige
+       que les <input> soient frères de la liste. Les <label> les commandent à
+       distance par leur attribut « for ». -->
+  <input type="radio" name="filtre" id="f-tout" checked>
+  <input type="radio" name="filtre" id="f-recit">
+  <input type="radio" name="filtre" id="f-chanson">
+  <input type="radio" name="filtre" id="f-guerre">
+  <input type="radio" name="filtre" id="f-a-identifier">
+
+  <div class="filtres">
+    <label for="f-tout">Tout</label>
+    <label for="f-recit">Récits</label>
+    <label for="f-chanson">Chansons</label>
+    <label for="f-guerre">La guerre</label>
+    <label for="f-a-identifier">À identifier</label>
+  </div>
+
   <ul class="pistes">
-    <li>
+    <li data-tags="a-identifier">
       <a href="01/">
         <span class="titre">Annonce des fiançailles à Grand-Père et Grand-Mère</span>
         <span class="meta">01 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="02/">
         <span class="titre">Arrivée des Américains à Brue</span>
         <span class="meta">02 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="03/">
         <span class="titre">Boulevard Perier</span>
         <span class="meta">03 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="04/">
         <span class="titre">Choix de vie</span>
         <span class="meta">04 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="05/">
         <span class="titre">Fiançailles Albert Mady</span>
         <span class="meta">05 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="chanson voix-albert">
       <a href="06/">
         <span class="titre">Grand-Père chante</span>
         <span class="meta">06 &middot; enregistrement à venir</span>
+        <span class="tags"><span class="tag tag-chanson">chanson</span><span class="tag tag-voix">Albert Magnan</span></span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="07/">
         <span class="titre">Installation du téléphone chez les Magnan</span>
         <span class="meta">07 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="08/">
         <span class="titre">Les Allemandes chez Mady et Grand-Père</span>
         <span class="meta">08 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="09/">
         <span class="titre">Les Allemandes chez Mady et Grand-Père (2)</span>
         <span class="meta">09 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="10/">
         <span class="titre">Les sœurs de Grand-Père</span>
         <span class="meta">10 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="11/">
         <span class="titre">Liquidation Magnan Frères</span>
         <span class="meta">11 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="12/">
         <span class="titre">Magnan Frères</span>
         <span class="meta">12 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="recit voix-suzanne guerre">
       <a href="13/">
         <span class="titre">Mamie raconte la guerre</span>
         <span class="meta">13 &middot; enregistrement à venir</span>
+        <span class="tags"><span class="tag tag-recit">récit</span><span class="tag tag-voix">Suzanne Bourges</span><span class="tag tag-theme">guerre</span></span>
       </a>
     </li>
-    <li>
+    <li data-tags="recit voix-suzanne guerre">
       <a href="14/">
         <span class="titre">Mamie raconte la guerre (2)</span>
         <span class="meta">14 &middot; enregistrement à venir</span>
+        <span class="tags"><span class="tag tag-recit">récit</span><span class="tag tag-voix">Suzanne Bourges</span><span class="tag tag-theme">guerre</span></span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="15/">
         <span class="titre">Parrain Nico</span>
         <span class="meta">15 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="16/">
         <span class="titre">Paul Roux</span>
         <span class="meta">16 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="17/">
         <span class="titre">Rencontre avec la famille Bourges</span>
         <span class="meta">17 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="18/">
         <span class="titre">Tante Guiguitte</span>
         <span class="meta">18 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="19/">
         <span class="titre">Vive Mady et Grand-Père</span>
         <span class="meta">19 &middot; enregistrement à venir</span>
       </a>
     </li>
-    <li>
+    <li data-tags="a-identifier">
       <a href="20/">
         <span class="titre">Voyage entre frères et sœurs en 1950</span>
         <span class="meta">20 &middot; enregistrement à venir</span>
