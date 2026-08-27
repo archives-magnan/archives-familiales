@@ -47,6 +47,9 @@ père** (29 mai 2020 – 19 janvier 2022). Il vient d'ailleurs, et on ne sait pa
 encore de qui : qui tenait le micro ce jour-là, et sur quel support. Un
 téléphone, très probablement, vu la date — mais ce n'est pas établi.
 
+**Samuel ne le sait pas** (28 août 2026). La question est pour **Anne**, ou pour
+**Nicolas Magnan** lui-même, qui s'en souvient sans doute.
+
 ### Fiches des vingt enregistrements
 
 Qui parle, la date, le lieu, la durée, le support d'origine : ces champs seront
