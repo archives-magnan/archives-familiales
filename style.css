@@ -680,16 +680,12 @@ dd { margin: .1rem 0 0; }
 .arborescence .g3 > summary, .arborescence .g3 > .personne { border-left-color: var(--gen3); }
 .arborescence .g4 > summary, .arborescence .g4 > .personne { border-left-color: var(--gen4); }
 
-/* Un trou dans l'arbre se voit. C'est voulu : il appelle à être comblé, au
-   lieu de laisser croire que la branche s'arrête là. */
-.a-completer {
-  font-style: italic;
-  color: var(--ink-soft);
-  border-bottom: 1px dotted var(--rule);
-}
-
-.a-completer::before { content: "à compléter"; }
-.a-completer:not(:empty)::before { content: none; }
+/* La classe .a-completer affichait « à compléter » à la place d'une valeur
+   manquante. Retirée de l'affichage le 27/08/2026, en même temps que
+   .incertain : le site se lit comme une page achevée, et un champ qu'on ne
+   sait pas remplir ne s'affiche plus du tout plutôt que de s'afficher vide.
+   Ce qui reste à trouver est listé dans A-CONFIRMER.md, à la racine du dépôt.
+   Pour la rétablir, la reprendre dans l'historique du dépôt. */
 
 /* ── Planche des QR codes ── */
 
