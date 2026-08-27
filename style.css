@@ -80,6 +80,12 @@
 
 * { box-sizing: border-box; }
 
+/* L'attribut « hidden » masque par la feuille de style du navigateur, que
+   n'importe quelle règle d'auteur écrase — « .filtres { display: flex } »
+   suffit à faire réapparaître un bloc pourtant marqué caché. On remet donc
+   l'attribut au-dessus de tout. */
+[hidden] { display: none !important; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;   /* la barre collante ne doit rien masquer */
@@ -257,6 +263,71 @@ h2 {
   font-style: normal;
   color: var(--ink-soft);
   letter-spacing: .01em;
+}
+
+/* ── Recherche ──
+   Ce bloc n'apparaît que si recherche.js s'exécute. Sinon ce sont les boutons
+   radio en CSS, juste en dessous, qui restent visibles. */
+
+.recherche { margin: 0 0 1.75rem; }
+
+.visuellement-cache {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.champ { display: block; margin-bottom: .9rem; }
+
+.recherche input[type="search"] {
+  width: 100%;
+  max-width: 26rem;
+  font: 1rem/1.4 var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: .7rem 1.1rem;
+  box-shadow: var(--ombre);
+  transition: border-color .2s var(--courbe), box-shadow .2s var(--courbe);
+}
+
+.recherche input[type="search"]::placeholder { color: var(--ink-soft); }
+
+.recherche input[type="search"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: var(--ombre-levee);
+}
+
+.etiquettes { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+.etiquettes button {
+  font: 500 .8125rem/1 var(--sans);
+  color: var(--ink-soft);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  transition: background .2s var(--courbe), color .2s var(--courbe),
+              border-color .2s var(--courbe);
+}
+
+.etiquettes button:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+.etiquettes button[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.compte {
+  margin: .9rem 0 0;
+  font: .8125rem/1.5 var(--sans);
+  color: var(--ink-soft);
 }
 
 /* ── Filtres ──
@@ -735,7 +806,8 @@ a { color: var(--accent); }
    theme.js déplie les branches avant l'impression et restaure ensuite l'état
    laissé par le lecteur. */
 @media print {
-  .barre, .retour, .vues, audio { display: none !important; }
+  .barre, .retour, .vues, .recherche, .filtres, audio { display: none !important; }
+  .pistes li[hidden] { display: block !important; }
 
   body { background: #fff; color: #000; padding: 0; }
   main { padding: 0; }

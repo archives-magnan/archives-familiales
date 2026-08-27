@@ -56,7 +56,8 @@ index.html        ← la page d'accueil, qui liste tout
 404.html          ← la page affichée quand une adresse n'existe pas
 qr/               ← les QR codes du livre, un par emplacement
 style.css         ← l'apparence, commune à toutes les pages
-theme.js          ← le bouton clair/sombre, le seul programme du site
+theme.js          ← le bouton clair/sombre et les deux vues de l'arbre
+recherche.js      ← la recherche et les filtres de la page d'accueil
 audio/            ← les fichiers .mp3
 arbre/index.html  ← l'arbre généalogique
 01/index.html     ← la page du premier enregistrement
@@ -169,9 +170,19 @@ indétectable à l'œil.
 
 ### Étiqueter un enregistrement
 
-La page d'accueil trie les enregistrements par étiquette. Le tri se fait
-entièrement en CSS, sans aucun programme : ce sont des boutons radio cachés, et
-la liste reste entière si quoi que ce soit cesse de fonctionner.
+La page d'accueil se cherche et se filtre. `recherche.js` fournit la barre de
+recherche et des étiquettes **cumulables** — on peut demander « chanson » *et*
+« guerre » à la fois. La recherche ignore les accents : taper `fiancailles`
+trouve « fiançailles ».
+
+**Si ce fichier ne s'exécute pas, la page reste utilisable** : des boutons radio
+en CSS pur prennent le relais, avec un seul critère à la fois. Et si même le CSS
+lâchait, les vingt enregistrements resteraient tous listés. Rien d'essentiel ne
+dépend d'un programme.
+
+**Les boutons de filtre ne sont écrits nulle part** : le script les reconstruit
+à partir des pastilles présentes dans la page. Étiqueter un enregistrement de
+plus fait apparaître son filtre tout seul, sans toucher au script.
 
 Trois dimensions, et **volontairement pas une de plus** — un vocabulaire qui
 enfle cesse d'être un filtre :
@@ -193,9 +204,12 @@ et rien d'autre : il apparaît alors sous le filtre du même nom, qui sert de
 liste de choses à faire. **Ne pas étiqueter au jugé** — une étiquette posée à
 tort ne se rediscute jamais.
 
-Pour qu'un nouveau filtre apparaisse, il faut trois choses : un `<input>`, un
-`<label>`, et une ligne dans la règle de tri de `style.css`. Tout est
-au même endroit dans chaque fichier.
+Chaque pastille porte son code : `<span class="tag" data-tag="guerre">guerre</span>`.
+C'est ce code que le script lit pour bâtir les filtres.
+
+Chaque `<li>` porte aussi un `data-recherche=""` vide. **C'est l'endroit prévu
+pour un extrait de transcription** : la recherche le fouille déjà, il ne reste
+qu'à le remplir le jour venu — le script n'aura pas à changer.
 
 ### Modifier le texte d'une page
 
